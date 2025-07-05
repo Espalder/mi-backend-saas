@@ -22,3 +22,8 @@ class Settings:
     DEBUG: bool = os.getenv("DEBUG", "True").lower() == "true"
 
 settings = Settings() 
+DB_HOST = settings.DB_HOST
+DB_PORT = settings.DB_PORT
+DB_USER = settings.DB_USER
+DB_PASSWORD = settings.DB_PASSWORD
+DB_NAME = settings.DB_NAME 
