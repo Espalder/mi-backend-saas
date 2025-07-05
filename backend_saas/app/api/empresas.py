@@ -80,3 +80,46 @@ async def create_empresa(
     db.commit()
     db.refresh(db_empresa)
     return db_empresa 
+
+@router.get("/me", response_model=EmpresaResponse)
+async def get_empresa_actual(
+    current_user: Usuario = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Obtener la empresa del usuario autenticado"""
+    empresa = db.query(Empresa).filter(
+        Empresa.id == current_user.empresa_id,
+        Empresa.activo == True
+    ).first()
+    
+    if not empresa:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Empresa no encontrada"
+        )
+    return empresa
+
+@router.put("/me", response_model=EmpresaResponse)
+async def update_empresa_actual(
+    empresa_update: EmpresaUpdate,
+    current_user: Usuario = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Actualizar la empresa del usuario autenticado"""
+    empresa = db.query(Empresa).filter(
+        Empresa.id == current_user.empresa_id,
+        Empresa.activo == True
+    ).first()
+    
+    if not empresa:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Empresa no encontrada"
+        )
+    
+    for field, value in empresa_update.dict(exclude_unset=True).items():
+        setattr(empresa, field, value)
+    
+    db.commit()
+    db.refresh(empresa)
+    return empresa 
