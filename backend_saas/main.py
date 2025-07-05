@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
-from config import settings
+from app.config import settings
 from app.models.database import get_db, engine
 from app.models import Base
 from app.services.auth_service import AuthService
