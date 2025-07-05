@@ -3,7 +3,7 @@ from typing import Optional
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
-from config import settings
+from app.config import settings
 from ..models.usuario import Usuario
 from ..schemas.auth import TokenData
 
