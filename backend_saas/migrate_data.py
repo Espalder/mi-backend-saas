@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from app.models.database import SessionLocal, engine
 from app.models import Base, Empresa, Usuario, Producto, Cliente, Venta, DetalleVenta
 from app.services.auth_service import AuthService
-from config import settings
+from app.config import settings
 
 def migrate_data():
     """Migrar datos existentes a la nueva estructura multi-tenant"""
