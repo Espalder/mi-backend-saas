@@ -52,6 +52,10 @@ async def root():
 async def health_check():
     return {"status": "healthy"}
 
+@app.get("/usuarios/me")
+async def get_me(current_user = Depends(get_current_user)):
+    return current_user
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000) 
