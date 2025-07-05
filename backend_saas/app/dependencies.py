@@ -22,7 +22,7 @@ async def get_current_user(
     user = db.query(Usuario).filter(Usuario.id == token_data.user_id).first()
     if user is None:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="Usuario no encontrado",
             headers={"WWW-Authenticate": "Bearer"},
         )

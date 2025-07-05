@@ -76,3 +76,7 @@ async def create_usuario(
     db.commit()
     db.refresh(db_usuario)
     return db_usuario 
+
+@router.get("/me", response_model=UsuarioResponse)
+async def get_me(current_user: Usuario = Depends(get_current_user)):
+    return current_user 
