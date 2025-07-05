@@ -77,6 +77,17 @@ async def create_usuario(
     db.refresh(db_usuario)
     return db_usuario 
 
-@router.get("/me", response_model=UsuarioResponse)
+@router.get("/me")
 async def get_me(current_user: Usuario = Depends(get_current_user)):
-    return current_user 
+    """Obtener información del usuario autenticado"""
+    return {
+        "id": current_user.id,
+        "username": current_user.username,
+        "nombre": current_user.nombre,
+        "email": current_user.email,
+        "rol": current_user.rol,
+        "empresa_id": current_user.empresa_id,
+        "fecha_creacion": current_user.fecha_creacion,
+        "fecha_actualizacion": current_user.fecha_actualizacion,
+        "activo": current_user.activo
+    } 
