@@ -7,3 +7,5 @@ passlib[bcrypt]
 pydantic
 python-dotenv 
 python-multipart
+gunicorn
+pymysql
