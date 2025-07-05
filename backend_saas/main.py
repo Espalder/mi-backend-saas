@@ -6,7 +6,7 @@ from app.config import settings
 from app.models.database import get_db, engine
 from app.models import Base
 from app.services.auth_service import AuthService
-from app.api import auth, empresas, usuarios, productos, clientes, ventas
+from app.api import auth, empresas, usuarios, productos, clientes, ventas, reportes
 from app.dependencies import get_current_user
 
 # Crear las tablas en la base de datos
@@ -38,6 +38,7 @@ app.include_router(usuarios.router, prefix="/api/usuarios", tags=["Usuarios"])
 app.include_router(productos.router, prefix="/api/productos", tags=["Productos"])
 app.include_router(clientes.router, prefix="/api/clientes", tags=["Clientes"])
 app.include_router(ventas.router, prefix="/api/ventas", tags=["Ventas"])
+app.include_router(reportes.router, prefix="/api/reportes", tags=["Reportes"])
 
 @app.get("/")
 async def root():
