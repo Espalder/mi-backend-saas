@@ -31,7 +31,7 @@ async def get_productos(
             categoria_nombre = prod.categoria.nombre
         prod_dict = prod.__dict__.copy()
         prod_dict["categoria_nombre"] = categoria_nombre
-        prod_dict["precio_compra"] = prod.precio_compra
+        prod_dict["precio_compra"] = getattr(prod, "precio_compra", 0)
         productos_response.append(ProductoResponse(**prod_dict))
     return productos_response
 
