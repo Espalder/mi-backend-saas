@@ -73,10 +73,9 @@ async def create_producto(
             detail="Ya existe un producto con ese código en esta empresa"
         )
     
-    db_producto = Producto(
-        **producto.dict(),
-        empresa_id=current_user.empresa_id
-    )
+    data = producto.dict()
+    data["empresa_id"] = current_user.empresa_id
+    db_producto = Producto(**data)
     db.add(db_producto)
     db.commit()
     db.refresh(db_producto)
