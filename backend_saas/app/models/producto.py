@@ -12,6 +12,7 @@ class Producto(Base):
     nombre = Column(String(100), nullable=False)
     descripcion = Column(Text, nullable=True)
     precio = Column(Numeric(10, 2), nullable=False)
+    precio_compra = Column(Numeric(10, 2), nullable=False)
     stock = Column(Integer, default=0)
     stock_minimo = Column(Integer, default=0)
     categoria_id = Column(Integer, ForeignKey("categorias.id"), nullable=True)
