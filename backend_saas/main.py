@@ -7,6 +7,7 @@ from app.models.database import get_db, engine
 from app.models import Base
 from app.services.auth_service import AuthService
 from app.api import auth, empresas, usuarios, productos, clientes, ventas, reportes, categorias, compras, proveedores, historial, configuracion
+from app.dependencies import get_current_user
 
 # Crear las tablas en la base de datos
 Base.metadata.create_all(bind=engine)
