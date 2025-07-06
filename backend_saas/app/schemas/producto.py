@@ -8,6 +8,7 @@ class ProductoBase(BaseModel):
     nombre: str
     descripcion: Optional[str] = None
     precio: Decimal
+    precio_compra: Decimal
     stock: int = 0
     stock_minimo: int = 0
     categoria_id: Optional[int] = None
@@ -19,6 +20,7 @@ class ProductoUpdate(BaseModel):
     nombre: Optional[str] = None
     descripcion: Optional[str] = None
     precio: Optional[Decimal] = None
+    precio_compra: Optional[Decimal] = None
     stock: Optional[int] = None
     stock_minimo: Optional[int] = None
     categoria_id: Optional[int] = None
