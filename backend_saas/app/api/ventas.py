@@ -8,6 +8,7 @@ from app.models.venta import Venta, DetalleVenta
 from app.models.producto import Producto
 from app.schemas.venta import VentaCreate, VentaUpdate, VentaResponse, DetalleVentaCreate
 from app.dependencies import get_current_user
+from datetime import datetime
 
 router = APIRouter()
 
@@ -60,7 +61,8 @@ async def create_venta(
         descuento=venta.descuento,
         total=venta.total,
         estado=venta.estado,
-        notas=venta.notas
+        notas=venta.notas,
+        fecha=datetime.utcnow()
     )
     db.add(db_venta)
     db.commit()
