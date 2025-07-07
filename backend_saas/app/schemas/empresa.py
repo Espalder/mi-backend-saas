@@ -19,7 +19,7 @@ class EmpresaUpdate(BaseModel):
 
 class EmpresaResponse(EmpresaBase):
     id: int
-    fecha_creacion: datetime
+    fecha_creacion: Optional[datetime] = None
     fecha_actualizacion: Optional[datetime] = None
     activo: Optional[bool] = None
     plan_suscripcion: Optional[str] = None
