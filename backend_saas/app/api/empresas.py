@@ -5,6 +5,7 @@ from app.models.database import get_db
 from app.models.usuario import Usuario
 from app.models.empresa import Empresa
 from app.schemas.empresa import EmpresaCreate, EmpresaUpdate, EmpresaResponse
+from pydantic import ValidationError
 from app.dependencies import get_current_user
 
 router = APIRouter()
@@ -97,12 +98,11 @@ async def get_empresa_actual(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Empresa no encontrada"
         )
-    # DEBUG: imprime los tipos reales
-    print('DEBUG empresa:', empresa)
-    print('DEBUG activo:', empresa.activo, type(empresa.activo))
-    print('DEBUG fecha_creacion:', empresa.fecha_creacion, type(empresa.fecha_creacion))
-    print('DEBUG fecha_actualizacion:', empresa.fecha_actualizacion, type(empresa.fecha_actualizacion))
-    return empresa
+    try:
+        return EmpresaResponse.from_orm(empresa)
+    except ValidationError as e:
+        print('VALIDATION ERROR:', e)
+        raise HTTPException(status_code=500, detail=str(e))
 
 @router.put("/me", response_model=EmpresaResponse)
 async def update_empresa_actual(
