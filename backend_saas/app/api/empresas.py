@@ -82,12 +82,28 @@ async def create_empresa(
     db.refresh(db_empresa)
     return db_empresa 
 
-@router.get("/me", response_model=None)
+@router.get("/me", response_model=EmpresaResponse)
 async def get_empresa_actual(
     current_user: Usuario = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
-    return {"mensaje": "funciona"}
+    empresa = db.query(Empresa).filter(
+        Empresa.id == current_user.empresa_id,
+        Empresa.activo == True
+    ).first()
+    
+    if not empresa:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Empresa no encontrada"
+        )
+    try:
+        return EmpresaResponse.from_orm(empresa)
+    except ValidationError as e:
+        raise HTTPException(
+            status_code=418,
+            detail=e.errors()
+        )
 
 @router.put("/me", response_model=EmpresaResponse)
 async def update_empresa_actual(
