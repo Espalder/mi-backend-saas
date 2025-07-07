@@ -82,30 +82,12 @@ async def create_empresa(
     db.refresh(db_empresa)
     return db_empresa 
 
-@router.get("/me", response_model=EmpresaResponse)
+@router.get("/me", response_model=None)
 async def get_empresa_actual(
     current_user: Usuario = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
-    empresa = db.query(Empresa).filter(
-        Empresa.id == current_user.empresa_id,
-        Empresa.activo == True
-    ).first()
-    
-    if not empresa:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Empresa no encontrada"
-        )
-    # Lanzar excepción con los datos y tipos para debug
-    raise HTTPException(
-        status_code=418,
-        detail={
-            'empresa': empresa.__dict__,
-            'tipos': {k: str(type(v)) for k, v in empresa.__dict__.items()}
-        }
-    )
-    return empresa
+    return {"mensaje": "funciona"}
 
 @router.put("/me", response_model=EmpresaResponse)
 async def update_empresa_actual(
