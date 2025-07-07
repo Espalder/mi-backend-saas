@@ -98,11 +98,7 @@ async def get_empresa_actual(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Empresa no encontrada"
         )
-    try:
-        return EmpresaResponse.from_orm(empresa)
-    except ValidationError as e:
-        print('VALIDATION ERROR:', e)
-        raise HTTPException(status_code=500, detail=str(e))
+    return EmpresaResponse.from_orm(empresa)
 
 @router.put("/me", response_model=EmpresaResponse)
 async def update_empresa_actual(
