@@ -82,7 +82,7 @@ async def create_empresa(
     db.refresh(db_empresa)
     return db_empresa 
 
-@router.get("/me")
+@router.get("/me", response_model=EmpresaResponse)
 async def get_empresa_actual(
     current_user: Usuario = Depends(get_current_user),
     db: Session = Depends(get_db)
@@ -97,19 +97,7 @@ async def get_empresa_actual(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Empresa no encontrada"
         )
-    empresa_dict = {
-        "id": empresa.id,
-        "nombre": empresa.nombre,
-        "codigo_empresa": empresa.codigo_empresa,
-        "descripcion": empresa.descripcion,
-        "plan_suscripcion": empresa.plan_suscripcion,
-        "fecha_creacion": str(empresa.fecha_creacion) if empresa.fecha_creacion else None,
-        "fecha_actualizacion": str(empresa.fecha_actualizacion) if empresa.fecha_actualizacion else None,
-        "activo": bool(empresa.activo) if empresa.activo is not None else None,
-    }
-    print('DEBUG empresa_dict:', empresa_dict)
-    print('TIPOS:', {k: type(v) for k, v in empresa_dict.items()})
-    return empresa_dict
+    return empresa
 
 @router.put("/me", response_model=EmpresaResponse)
 async def update_empresa_actual(
