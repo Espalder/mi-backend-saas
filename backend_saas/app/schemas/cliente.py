@@ -9,7 +9,7 @@ class ClienteBase(BaseModel):
     direccion: Optional[str] = None
 
 class ClienteCreate(ClienteBase):
-    empresa_id: int
+    pass
 
 class ClienteUpdate(BaseModel):
     nombre: Optional[str] = None
