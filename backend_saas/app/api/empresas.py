@@ -82,7 +82,7 @@ async def create_empresa(
     db.refresh(db_empresa)
     return db_empresa 
 
-@router.get("/me", response_model=EmpresaResponse)
+@router.get("/me")
 async def get_empresa_actual(
     current_user: Usuario = Depends(get_current_user),
     db: Session = Depends(get_db)
