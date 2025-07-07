@@ -97,6 +97,9 @@ async def get_empresa_actual(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Empresa no encontrada"
         )
+    # DEBUG: Imprimir valores y tipos de todos los campos
+    print('DEBUG empresa:', empresa.__dict__)
+    print('DEBUG tipos:', {k: type(v) for k, v in empresa.__dict__.items()})
     return empresa
 
 @router.put("/me", response_model=EmpresaResponse)
