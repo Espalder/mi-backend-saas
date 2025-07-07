@@ -98,7 +98,19 @@ async def get_empresa_actual(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Empresa no encontrada"
         )
-    return EmpresaResponse.from_orm(empresa)
+    empresa_dict = {
+        "id": empresa.id,
+        "nombre": empresa.nombre,
+        "codigo_empresa": empresa.codigo_empresa,
+        "descripcion": empresa.descripcion,
+        "plan_suscripcion": empresa.plan_suscripcion,
+        "fecha_creacion": empresa.fecha_creacion,
+        "fecha_actualizacion": empresa.fecha_actualizacion,
+        "activo": empresa.activo,
+    }
+    print('DEBUG empresa_dict:', empresa_dict)
+    print('TIPOS:', {k: type(v) for k, v in empresa_dict.items()})
+    return empresa_dict
 
 @router.put("/me", response_model=EmpresaResponse)
 async def update_empresa_actual(
