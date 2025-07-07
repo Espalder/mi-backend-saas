@@ -21,7 +21,8 @@ class EmpresaResponse(EmpresaBase):
     id: int
     fecha_creacion: datetime
     fecha_actualizacion: Optional[datetime] = None
-    activo: bool
+    activo: Optional[bool] = None
+    plan_suscripcion: Optional[str] = None
     
     class Config:
         from_attributes = True 
