@@ -27,7 +27,30 @@ async def get_empresas(
     empresas = db.query(Empresa).filter(Empresa.activo == True).offset(skip).limit(limit).all()
     return empresas
 
-@router.get("/{empresa_id}", response_model=EmpresaResponse)
+@router.get("/me")
+async def get_empresa_actual(
+    current_user: Usuario = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    empresa = db.query(Empresa).filter(
+        Empresa.id == current_user.empresa_id,
+        Empresa.activo == True
+    ).first()
+    
+    if not empresa:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Empresa no encontrada"
+        )
+    try:
+        return EmpresaResponse.from_orm(empresa)
+    except ValidationError as e:
+        raise HTTPException(
+            status_code=418,
+            detail=e.errors()
+        )
+
+@router.get("/{empresa_id}")
 async def get_empresa(
     empresa_id: int,
     current_user: Usuario = Depends(get_current_user),
@@ -81,29 +104,6 @@ async def create_empresa(
     db.commit()
     db.refresh(db_empresa)
     return db_empresa 
-
-@router.get("/me")
-async def get_empresa_actual(
-    current_user: Usuario = Depends(get_current_user),
-    db: Session = Depends(get_db)
-):
-    empresa = db.query(Empresa).filter(
-        Empresa.id == current_user.empresa_id,
-        Empresa.activo == True
-    ).first()
-    
-    if not empresa:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Empresa no encontrada"
-        )
-    try:
-        return EmpresaResponse.from_orm(empresa)
-    except ValidationError as e:
-        raise HTTPException(
-            status_code=418,
-            detail=e.errors()
-        )
 
 @router.put("/me", response_model=EmpresaResponse)
 async def update_empresa_actual(
