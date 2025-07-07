@@ -97,6 +97,11 @@ async def get_empresa_actual(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Empresa no encontrada"
         )
+    # DEBUG: imprime los tipos reales
+    print('DEBUG empresa:', empresa)
+    print('DEBUG activo:', empresa.activo, type(empresa.activo))
+    print('DEBUG fecha_creacion:', empresa.fecha_creacion, type(empresa.fecha_creacion))
+    print('DEBUG fecha_actualizacion:', empresa.fecha_actualizacion, type(empresa.fecha_actualizacion))
     return empresa
 
 @router.put("/me", response_model=EmpresaResponse)
