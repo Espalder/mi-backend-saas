@@ -10,7 +10,7 @@ class UsuarioBase(BaseModel):
 
 class UsuarioCreate(UsuarioBase):
     password: str
-    empresa_id: int
+    empresa_id: Optional[int] = None
 
 class UsuarioUpdate(BaseModel):
     nombre: Optional[str] = None
