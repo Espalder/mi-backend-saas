@@ -1,0 +1,30 @@
+[
+  {
+    "fecha_generacion": "2025-06-23 10:05:40",
+    "fecha_inicio": "2025-06-22",
+    "fecha_fin": "2025-06-22",
+    "total_ventas": 0,
+    "total_productos": 0
+  },
+  {
+    "fecha_generacion": "2025-06-23 10:05:51",
+    "fecha_inicio": "2025-06-23",
+    "fecha_fin": "2025-06-29",
+    "total_ventas": 0,
+    "total_productos": 0
+  },
+  {
+    "fecha_generacion": "2025-06-23 10:06:03",
+    "fecha_inicio": "2025-06-01",
+    "fecha_fin": "2025-06-30",
+    "total_ventas": 3,
+    "total_productos": 7
+  },
+  {
+    "fecha_generacion": "2025-06-23 11:39:00",
+    "fecha_inicio": "2025-06-01",
+    "fecha_fin": "2025-06-30",
+    "total_ventas": 3,
+    "total_productos": 7
+  }
+]
