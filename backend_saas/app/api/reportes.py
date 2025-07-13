@@ -6,6 +6,8 @@ from app.models.usuario import Usuario
 from app.models.producto import Producto
 from app.models.cliente import Cliente
 from app.models.venta import Venta
+from app.models.venta import DetalleVenta
+from app.models.categoria import Categoria
 from app.dependencies import get_current_user
 from typing import Dict, Any, List
 from datetime import datetime
@@ -109,17 +111,16 @@ def ventas_por_categoria(fecha_inicio: str, fecha_fin: str, db: Session = Depend
         ff = datetime.fromisoformat(fecha_fin)
     except Exception:
         raise HTTPException(status_code=400, detail="Fechas inválidas")
-    from app.models.producto import Producto
-    from app.models.categoria import Categoria
+    # Unir DetalleVenta -> Producto -> Categoria y agrupar
     ventas = db.query(
         Categoria.nombre.label("categoria"),
-        func.sum(Venta.total).label("total")
-    ).join(Producto, Producto.empresa_id == Venta.empresa_id)
-    ventas = ventas.join(Categoria, Categoria.id == Producto.categoria_id)
+        func.sum(DetalleVenta.subtotal).label("total")
+    ).join(Producto, DetalleVenta.producto_id == Producto.id)
+    ventas = ventas.join(Categoria, Producto.categoria_id == Categoria.id)
+    ventas = ventas.join(Venta, DetalleVenta.venta_id == Venta.id)
     ventas = ventas.filter(
         Venta.empresa_id == current_user.empresa_id,
         Venta.fecha >= fi,
-        Venta.fecha <= ff,
-        Producto.id == Venta.producto_id
+        Venta.fecha <= ff
     ).group_by(Categoria.nombre).order_by(Categoria.nombre).all()
     return [{"categoria": v[0], "total": float(v[1])} for v in ventas] 
