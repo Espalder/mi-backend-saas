@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from sqlalchemy import func
+from sqlalchemy import func, extract
 from app.models.database import get_db
 from app.models.usuario import Usuario
 from app.models.producto import Producto
@@ -82,3 +82,44 @@ def get_ventas_fechas(fecha_inicio: str, fecha_fin: str, db: Session = Depends(g
     ).all()
     total = sum([float(v.total) for v in ventas])
     return {"ventas": [v.id for v in ventas], "total": total} 
+
+@router.get("/ventas-por-dia")
+def ventas_por_dia(fecha_inicio: str, fecha_fin: str, db: Session = Depends(get_db), current_user=Depends(get_current_user)):
+    """Devuelve ventas agrupadas por día en el rango de fechas"""
+    try:
+        fi = datetime.fromisoformat(fecha_inicio)
+        ff = datetime.fromisoformat(fecha_fin)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Fechas inválidas")
+    ventas = db.query(
+        func.date(Venta.fecha).label("fecha"),
+        func.sum(Venta.total).label("total")
+    ).filter(
+        Venta.empresa_id == current_user.empresa_id,
+        Venta.fecha >= fi,
+        Venta.fecha <= ff
+    ).group_by(func.date(Venta.fecha)).order_by(func.date(Venta.fecha)).all()
+    return [{"fecha": str(v[0]), "total": float(v[1])} for v in ventas]
+
+@router.get("/ventas-por-categoria")
+def ventas_por_categoria(fecha_inicio: str, fecha_fin: str, db: Session = Depends(get_db), current_user=Depends(get_current_user)):
+    """Devuelve ventas agrupadas por categoría de producto en el rango de fechas"""
+    try:
+        fi = datetime.fromisoformat(fecha_inicio)
+        ff = datetime.fromisoformat(fecha_fin)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Fechas inválidas")
+    from app.models.producto import Producto
+    from app.models.categoria import Categoria
+    ventas = db.query(
+        Categoria.nombre.label("categoria"),
+        func.sum(Venta.total).label("total")
+    ).join(Producto, Producto.empresa_id == Venta.empresa_id)
+    ventas = ventas.join(Categoria, Categoria.id == Producto.categoria_id)
+    ventas = ventas.filter(
+        Venta.empresa_id == current_user.empresa_id,
+        Venta.fecha >= fi,
+        Venta.fecha <= ff,
+        Producto.id == Venta.producto_id
+    ).group_by(Categoria.nombre).order_by(Categoria.nombre).all()
+    return [{"categoria": v[0], "total": float(v[1])} for v in ventas] 
