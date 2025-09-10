@@ -155,27 +155,121 @@ class SistemaGestionAppOffline:
         notebook.bind('<<NotebookTabChanged>>', on_tab_changed)
 
     def cambiar_tema(self, nuevo_tema):
-        set_tema_global(nuevo_tema)
-        messagebox.showinfo("Tema cambiado", "Por favor, reinicia la aplicación para aplicar el nuevo tema.")
-        self.root.destroy()
+        """Cambia el tema de la aplicación sin reiniciar"""
+        try:
+            from estilos import set_tema_global, configurar_estilos, get_colores_tema
+            
+            # Actualizar tema global
+            set_tema_global(nuevo_tema)
+            configurar_estilos(nuevo_tema)
+            
+            # Actualizar tema local
+            self.tema = nuevo_tema
+            colores = get_colores_tema(nuevo_tema)
+            
+            # Actualizar fondo de la ventana principal
+            self.root.configure(bg=colores['bg'])
+            
+            # Actualizar todos los módulos
+            for nombre_modulo, modulo in self.tabs.items():
+                if hasattr(modulo, 'actualizar_tema'):
+                    modulo.actualizar_tema(nuevo_tema)
+                elif hasattr(modulo, 'tema'):
+                    modulo.tema = nuevo_tema
+                    modulo.colores = get_colores_tema(nuevo_tema)
+                    if hasattr(modulo, 'recrear_interfaz'):
+                        modulo.recrear_interfaz()
+            
+            messagebox.showinfo("Tema Aplicado", "El nuevo tema se ha aplicado correctamente.")
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"Error al cambiar tema: {e}")
+    
+    def actualizar_tema_modulo(self, modulo, nuevo_tema):
+        """Actualiza el tema de un módulo específico"""
+        try:
+            from estilos import get_colores_tema
+            
+            if hasattr(modulo, 'tema'):
+                modulo.tema = nuevo_tema
+            if hasattr(modulo, 'colores'):
+                modulo.colores = get_colores_tema(nuevo_tema)
+            if hasattr(modulo, 'actualizar_tema'):
+                modulo.actualizar_tema(nuevo_tema)
+            elif hasattr(modulo, 'recrear_interfaz'):
+                modulo.recrear_interfaz()
+        except Exception as e:
+            print(f"Error al actualizar tema del módulo: {e}")
 
     def monitor_reconexion(self):
+        """Monitor de reconexión optimizado para mejor rendimiento"""
         while True:
-            time.sleep(10)  # Chequear cada 10 segundos
-            online = self.check_online()
-            if online and not self._last_online_state:
-                self._last_online_state = True
-                def online_actions():
-                    self.indicador_modo.config(text="🟢 Modo Online (Railway)", fg="green")
-                    self.sincronizar_bidireccional()
-                    messagebox.showinfo("Conexión restablecida", "¡Conexión restablecida! Los datos han sido sincronizados automáticamente entre local y nube.")
-                self.root.after(0, online_actions)
-            elif not online and self._last_online_state:
-                self._last_online_state = False
-                def offline_actions():
-                    self.indicador_modo.config(text="🔴 Modo Offline (SQLite local)", fg="red")
-                    messagebox.showwarning("Sin conexión", "Se ha perdido la conexión. Ahora trabajas en modo offline.")
-                self.root.after(0, offline_actions)
+            try:
+                time.sleep(30)  # Reducido de 10 a 30 segundos para mejor rendimiento
+                online = self.check_online()
+                
+                if online and not self._last_online_state:
+                    self._last_online_state = True
+                    def online_actions():
+                        try:
+                            if self.root.winfo_exists():
+                                self.indicador_modo.config(text="🟢 Modo Online (Railway)", fg="green")
+                                # Sincronización silenciosa para no interrumpir el trabajo
+                                threading.Thread(target=self.sincronizar_silencioso, daemon=True).start()
+                        except Exception as e:
+                            print(f"Error al procesar reconexión: {e}")
+                    
+                    try:
+                        self.root.after(0, online_actions)
+                    except Exception as e:
+                        print(f"Error al ejecutar acciones online: {e}")
+                        
+                elif not online and self._last_online_state:
+                    self._last_online_state = False
+                    def offline_actions():
+                        try:
+                            if self.root.winfo_exists():
+                                self.indicador_modo.config(text="🔴 Modo Offline (SQLite local)", fg="red")
+                                # Solo mostrar notificación si el usuario no está trabajando activamente
+                                self.root.after(5000, lambda: messagebox.showinfo(
+                                    "Sin conexión", 
+                                    "Se perdió la conexión. Los datos se guardarán localmente."
+                                ))
+                        except Exception as e:
+                            print(f"Error al procesar desconexión: {e}")
+                    
+                    try:
+                        self.root.after(0, offline_actions)
+                    except Exception as e:
+                        print(f"Error al ejecutar acciones offline: {e}")
+                        
+            except Exception as e:
+                print(f"Error en monitor de reconexión: {e}")
+                time.sleep(60)  # Espera más tiempo en caso de error
+    
+    def sincronizar_silencioso(self):
+        """Sincronización silenciosa sin interrumpir al usuario"""
+        try:
+            self.sincronizar_bidireccional()
+            # Notificación discreta
+            def mostrar_notificacion():
+                if self.root.winfo_exists():
+                    # Crear una notificación temporal
+                    notif = tk.Toplevel(self.root)
+                    notif.title("Sincronizado")
+                    notif.geometry("300x80+{}+{}".format(
+                        self.root.winfo_x() + 50,
+                        self.root.winfo_y() + 50
+                    ))
+                    notif.configure(bg='#4CAF50')
+                    tk.Label(notif, text="✅ Datos sincronizados con la nube", 
+                            bg='#4CAF50', fg='white', font=('Segoe UI', 10, 'bold')).pack(pady=20)
+                    # Auto-cerrar después de 3 segundos
+                    notif.after(3000, notif.destroy)
+            
+            self.root.after(0, mostrar_notificacion)
+        except Exception as e:
+            print(f"Error en sincronización silenciosa: {e}")
 
     def sincronizar_bidireccional(self):
         try:
