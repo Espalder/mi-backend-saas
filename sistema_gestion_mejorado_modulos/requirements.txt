@@ -1,0 +1,25 @@
+# Sistema de Gestión Empresarial - Dependencias
+
+# Base de datos
+mysql-connector-python==8.2.0
+sqlite3  # Incluido en Python standard library
+
+# Interfaz gráfica
+tkinter  # Incluido en Python standard library
+
+# Generación de PDFs
+reportlab==4.0.4
+
+# Gráficos y visualización
+matplotlib==3.8.2
+numpy==1.26.2
+
+# Utilidades
+Pillow==10.1.0  # Para manejo de imágenes en reportes
+
+# Desarrollo y testing
+pytest==7.4.3
+pytest-cov==4.1.0
+
+# Formato y fecha
+python-dateutil==2.8.2

@@ -111,4 +111,52 @@ class ConfiguracionUI:
             import json
             with open('configuracion.json', 'w', encoding='utf-8') as f:
                 json.dump(self.configuracion, f, ensure_ascii=False, indent=2)
-            self.callback_cambiar_tema(self.var_tema.get()) 
+            # En lugar de reiniciar, aplicar el tema inmediatamente
+            self.aplicar_tema_inmediato(self.var_tema.get())
+    
+    def aplicar_tema_inmediato(self, nuevo_tema):
+        """Aplica el nuevo tema sin reiniciar la aplicación"""
+        try:
+            from estilos import set_tema_global, configurar_estilos, get_colores_tema
+            
+            # Actualizar tema global
+            set_tema_global(nuevo_tema)
+            configurar_estilos(nuevo_tema)
+            
+            # Actualizar colores locales
+            self.tema = nuevo_tema
+            self.colores = get_colores_tema(nuevo_tema)
+            
+            # Actualizar todos los módulos si están disponibles
+            self.actualizar_tema_modulos(nuevo_tema)
+            
+            messagebox.showinfo("Tema Cambiado", "El tema se ha aplicado correctamente.")
+            
+        except Exception as e:
+            messagebox.showerror("Error", f"Error al cambiar tema: {e}")
+    
+    def actualizar_tema_modulos(self, nuevo_tema):
+        """Actualiza el tema en todos los módulos activos"""
+        try:
+            # Obtener la aplicación principal
+            app_principal = self.parent.master
+            if hasattr(app_principal, 'tabs') and app_principal.tabs:
+                
+                # Actualizar cada módulo
+                for nombre_modulo, modulo in app_principal.tabs.items():
+                    if hasattr(modulo, 'actualizar_tema'):
+                        modulo.actualizar_tema(nuevo_tema)
+                    elif hasattr(modulo, 'tema'):
+                        modulo.tema = nuevo_tema
+                        modulo.colores = get_colores_tema(nuevo_tema)
+                        if hasattr(modulo, 'recrear_interfaz'):
+                            modulo.recrear_interfaz()
+                
+                # Actualizar la ventana principal
+                if hasattr(app_principal, 'root'):
+                    from estilos import get_colores_tema
+                    colores = get_colores_tema(nuevo_tema)
+                    app_principal.root.configure(bg=colores['bg'])
+            
+        except Exception as e:
+            print(f"Error al actualizar módulos: {e}") 
