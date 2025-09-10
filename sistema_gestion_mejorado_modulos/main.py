@@ -76,19 +76,8 @@ class SistemaGestionApp:
 
     def cambiar_tema(self, nuevo_tema):
         set_tema_global(nuevo_tema)
-        self.tema = nuevo_tema
-        configurar_estilos(self.tema)
-        
-        # Actualizar todos los módulos/tabs con el nuevo tema
-        for tab_name, tab_module in self.tabs.items():
-            if hasattr(tab_module, 'actualizar_tema'):
-                tab_module.actualizar_tema(nuevo_tema)
-        
-        # Actualizar colores del frame principal
-        new_colors = get_colores_tema(nuevo_tema)
-        self.root.configure(bg=new_colors['bg'])
-        
-        messagebox.showinfo("Tema cambiado", "El tema se ha aplicado exitosamente.")
+        messagebox.showinfo("Tema cambiado", "Por favor, reinicia la aplicación para aplicar el nuevo tema.")
+        self.root.destroy()
 
 
 def main():
