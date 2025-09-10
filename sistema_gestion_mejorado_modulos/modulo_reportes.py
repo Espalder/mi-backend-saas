@@ -218,7 +218,6 @@ class ReportesUI:
                 self.labels_metricas[key].config(text="Error")
 
     def refrescar_automatico(self):
-        # Aquí solo debe refrescar dashboard, sin lógica de sincronización ni botones extra
-        self.parent.after(60000, self.actualizar_dashboard)
+        pass  # Deshabilitado, solo actualización manual
 
     # ... Métodos para generar reportes, mostrar dashboard, etc ... 
