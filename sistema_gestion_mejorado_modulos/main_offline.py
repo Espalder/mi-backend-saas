@@ -128,24 +128,25 @@ class SistemaGestionAppOffline:
         self.conn.commit()
 
     def crear_pestanas(self):
-        notebook = tk.ttk.Notebook(self.root)
+        import tkinter.ttk as ttk
+        notebook = ttk.Notebook(self.root)
         notebook.pack(fill='both', expand=True)
         pestanas = ROLES_PESTANAS.get(self.rol, [])
         self.tabs = {}
         if 'inventario' in pestanas:
-            tab_inv = tk.ttk.Frame(notebook)
+            tab_inv = ttk.Frame(notebook)
             notebook.add(tab_inv, text="📦 Inventario")
             self.tabs['inventario'] = InventarioUI(tab_inv, self.conn, self.cursor, self.rol, self.tema)
         if 'ventas' in pestanas:
-            tab_ventas = tk.ttk.Frame(notebook)
+            tab_ventas = ttk.Frame(notebook)
             notebook.add(tab_ventas, text="💰 Ventas")
             self.tabs['ventas'] = VentasUI(tab_ventas, self.conn, self.cursor, self.rol, self.tema)
         if 'reportes' in pestanas:
-            tab_reportes = tk.ttk.Frame(notebook)
+            tab_reportes = ttk.Frame(notebook)
             notebook.add(tab_reportes, text="📊 Reportes")
             self.tabs['reportes'] = ReportesUI(tab_reportes, self.conn, self.cursor, self.rol, self.tema)
         if 'configuracion' in pestanas:
-            tab_config = tk.ttk.Frame(notebook)
+            tab_config = ttk.Frame(notebook)
             notebook.add(tab_config, text="⚙️ Configuración")
             self.tabs['configuracion'] = ConfiguracionUI(tab_config, self.conn, self.cursor, self.rol, self.tema, self.cambiar_tema)
         def on_tab_changed(event):
@@ -256,6 +257,7 @@ class SistemaGestionAppOffline:
             usuarios_nube = cursor_mysql.fetchall()
             for usr in usuarios_nube:
                 self.cursor.execute("SELECT id FROM usuarios WHERE username = ?", (usr[0],))
+                existe = self.cursor.fetchone()
                 if existe:
                     self.cursor.execute("UPDATE usuarios SET password=?, nombre=?, rol=?, activo=?, sincronizado=1 WHERE username=?", (usr[1], usr[2], usr[3], usr[4], usr[0]))
                 else:
@@ -291,4 +293,4 @@ def main():
     SistemaGestionAppOffline(login.usuario, login.rol)
 
 if __name__ == "__main__":
-    main() 
+    main()
