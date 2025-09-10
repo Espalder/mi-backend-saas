@@ -396,7 +396,52 @@ class VentasUI:
             else:
                 messagebox.showwarning("Sincronización", "La sincronización completa solo está disponible desde el módulo de Inventario.")
         except Exception as e:
-            messagebox.showerror("Error", f"No se pudo sincronizar: {e}")
+            pass
+    
+    def actualizar_tema(self, nuevo_tema):
+        """Actualizar tema de la interfaz sin reiniciar"""
+        self.tema = nuevo_tema
+        self.colores = get_colores_tema(self.tema)
+        configurar_estilos(self.tema)
+        
+        # Actualizar todos los widgets con los nuevos colores
+        def actualizar_widget(widget):
+            try:
+                if isinstance(widget, (tk.Frame, tk.LabelFrame)):
+                    widget.configure(bg=self.colores['frame_bg'])
+                    if isinstance(widget, tk.LabelFrame):
+                        widget.configure(fg=self.colores['fg'])
+                elif isinstance(widget, tk.Label):
+                    widget.configure(bg=self.colores['frame_bg'], fg=self.colores['fg'])
+                elif isinstance(widget, tk.Entry):
+                    widget.configure(bg=self.colores['entry_bg'], fg=self.colores['entry_fg'])
+                elif isinstance(widget, tk.Text):
+                    widget.configure(bg=self.colores['entry_bg'], fg=self.colores['entry_fg'])
+                elif isinstance(widget, tk.Button):
+                    # Mantener colores específicos de botones según su función
+                    current_text = widget.cget('text')
+                    if "➕ Agregar" in current_text or "📋 Procesar" in current_text:
+                        widget.configure(bg=self.colores['button_bg'])
+                    elif "🗑️" in current_text:
+                        widget.configure(bg=self.colores['error_fg'])
+                    elif "🧹" in current_text:
+                        widget.configure(bg=self.colores['ok_fg'])
+                    else:
+                        widget.configure(bg=self.colores['button_bg'])
+                    widget.configure(fg=self.colores['button_fg'])
+                
+                # Recursivamente actualizar hijos
+                for child in widget.winfo_children():
+                    actualizar_widget(child)
+            except tk.TclError:
+                pass  # Widget ya no existe
+        
+        # Actualizar desde el widget principal
+        actualizar_widget(self.parent)
+        
+        # Refrescar datos
+        self.cargar_productos_ventas()
+        self.cargar_ventas()
 
     def descargar_productos(self):
         # Llama al método del módulo de inventario si existe

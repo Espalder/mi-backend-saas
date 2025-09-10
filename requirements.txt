@@ -1,2 +1,5 @@
 mysql-connector-python
-pillow 
+pillow
+matplotlib
+reportlab
+numpy 

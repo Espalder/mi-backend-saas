@@ -415,4 +415,52 @@ class InventarioUI:
         except Exception as e:
             messagebox.showerror("Error de descarga", f"No se pudo descargar la base de productos: {e}")
 
-    # Llamar verificar_stock_bajo tras agregar, actualizar, eliminar producto y tras guardar configuración 
+    # Llamar verificar_stock_bajo tras agregar, actualizar, eliminar producto y tras guardar configuración
+    
+    def actualizar_tema(self, nuevo_tema):
+        """Actualizar tema de la interfaz sin reiniciar"""
+        self.tema = nuevo_tema
+        self.colores = get_colores_tema(self.tema)
+        configurar_estilos(self.tema)
+        
+        # Actualizar todos los widgets con los nuevos colores
+        def actualizar_widget(widget):
+            try:
+                if isinstance(widget, (tk.Frame, tk.LabelFrame)):
+                    widget.configure(bg=self.colores['frame_bg'])
+                    if isinstance(widget, tk.LabelFrame):
+                        widget.configure(fg=self.colores['fg'])
+                elif isinstance(widget, tk.Label):
+                    widget.configure(bg=self.colores['frame_bg'], fg=self.colores['fg'])
+                elif isinstance(widget, tk.Entry):
+                    widget.configure(bg=self.colores['entry_bg'], fg=self.colores['entry_fg'])
+                elif isinstance(widget, tk.Text):
+                    widget.configure(bg=self.colores['entry_bg'], fg=self.colores['entry_fg'])
+                elif isinstance(widget, tk.Button):
+                    # Mantener colores específicos de botones según su función
+                    current_text = widget.cget('text')
+                    if "➕ Agregar" in current_text:
+                        widget.configure(bg=self.colores['button_bg'])
+                    elif "✏️ Actualizar" in current_text:
+                        widget.configure(bg=self.colores['accent'])
+                    elif "🗑️ Eliminar" in current_text:
+                        widget.configure(bg=self.colores['error_fg'])
+                    elif "🧹 Limpiar" in current_text:
+                        widget.configure(bg=self.colores['ok_fg'])
+                    else:
+                        widget.configure(bg=self.colores['button_bg'])
+                    widget.configure(fg=self.colores['button_fg'])
+                elif isinstance(widget, tk.Canvas):
+                    widget.configure(bg=self.colores['bg'])
+                
+                # Recursivamente actualizar hijos
+                for child in widget.winfo_children():
+                    actualizar_widget(child)
+            except tk.TclError:
+                pass  # Widget ya no existe
+        
+        # Actualizar desde el widget principal
+        actualizar_widget(self.parent)
+        
+        # Refrescar datos con nuevos colores
+        self.verificar_stock_bajo() 

@@ -107,8 +107,50 @@ class ConfiguracionUI:
         messagebox.showinfo("Restauración", "Datos restaurados exitosamente (simulado)")
     def cambiar_tema(self):
         if self.callback_cambiar_tema:
-            self.configuracion['tema'] = self.var_tema.get()
+            nuevo_tema = self.var_tema.get()
+            self.configuracion['tema'] = nuevo_tema
+            # Guardar la configuración con el nuevo tema
             import json
             with open('configuracion.json', 'w', encoding='utf-8') as f:
                 json.dump(self.configuracion, f, ensure_ascii=False, indent=2)
-            self.callback_cambiar_tema(self.var_tema.get()) 
+            # Aplicar el tema inmediatamente
+            self.callback_cambiar_tema(nuevo_tema)
+            # Actualizar la interfaz local también
+            self.actualizar_tema(nuevo_tema)
+    
+    def actualizar_tema(self, nuevo_tema):
+        """Actualizar tema de la interfaz sin reiniciar"""
+        self.tema = nuevo_tema
+        self.colores = get_colores_tema(self.tema)
+        configurar_estilos(self.tema)
+        
+        # Actualizar todos los widgets con los nuevos colores
+        def actualizar_widget(widget):
+            try:
+                if isinstance(widget, (tk.Frame, tk.LabelFrame)):
+                    widget.configure(bg=self.colores['frame_bg'])
+                    if isinstance(widget, tk.LabelFrame):
+                        widget.configure(fg=self.colores['fg'])
+                elif isinstance(widget, tk.Label):
+                    widget.configure(bg=self.colores['frame_bg'], fg=self.colores['fg'])
+                elif isinstance(widget, tk.Entry):
+                    widget.configure(bg=self.colores['entry_bg'], fg=self.colores['entry_fg'])
+                elif isinstance(widget, tk.Button):
+                    # Mantener colores específicos de botones
+                    current_bg = widget.cget('bg')
+                    if current_bg in ['#4CAF50', '#2196F3', '#F44336']:  # colores específicos
+                        pass  # mantener color específico
+                    else:
+                        widget.configure(bg=self.colores['button_bg'], fg=self.colores['button_fg'])
+                elif isinstance(widget, tk.Radiobutton):
+                    widget.configure(bg=self.colores['frame_bg'], fg=self.colores['fg'], 
+                                   selectcolor=self.colores['entry_bg'])
+                
+                # Recursivamente actualizar hijos
+                for child in widget.winfo_children():
+                    actualizar_widget(child)
+            except tk.TclError:
+                pass  # Widget ya no existe
+        
+        # Actualizar desde el widget principal
+        actualizar_widget(self.parent) 
