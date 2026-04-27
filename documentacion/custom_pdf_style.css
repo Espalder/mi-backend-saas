@@ -1,0 +1,83 @@
+@page {
+  margin: 2.5cm 2cm 2.5cm 2cm;
+}
+body {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 12pt;
+  color: #222;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Times New Roman', Times, serif;
+  color: #002244;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+h1 {
+  font-size: 2.2em;
+  text-align: center;
+  border-bottom: 2px solid #003366;
+  padding-bottom: 0.2em;
+  margin-bottom: 1em;
+  letter-spacing: 0.05em;
+}
+h2 {
+  font-size: 1.5em;
+  border-left: 4px solid #003366;
+  padding-left: 0.5em;
+  background: #f0f4fa;
+}
+h3 {
+  font-size: 1.2em;
+  color: #005599;
+}
+p, li {
+  line-height: 1.6;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+td, th {
+  border: 1px solid #888;
+  padding: 0.4em 0.7em;
+}
+th {
+  background: #e6f3ff;
+  color: #003366;
+}
+code, pre {
+  background: #f4f4f4;
+  font-size: 11pt;
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+}
+blockquote {
+  border-left: 4px solid #003366;
+  background: #f9f9f9;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  color: #555;
+}
+
+/* Numeración de páginas centrada abajo */
+@page {
+  @bottom-center {
+    content: "Página " counter(page) " de " counter(pages);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    color: #444;
+  }
+}
+
+/* Portada especial */
+center h1, center h2, center h3, center p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+center {
+  display: block;
+  text-align: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+} 

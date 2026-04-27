@@ -1,7 +1,13 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+# Cargar variables de entorno desde el archivo .env
+# Buscar en el directorio actual, en el directorio del backend y en la raíz del proyecto
+load_dotenv() # Directorio actual
+backend_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(os.path.join(backend_root, '.env')) # Directorio backend_saas/
+project_root = os.path.dirname(backend_root)
+load_dotenv(os.path.join(project_root, '.env')) # Raíz del proyecto
 
 class Settings:
     # Database Configuration

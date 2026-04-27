@@ -1,0 +1,2759 @@
+“Implementación de un software de gestión digital para optimizar los procesos en pequeñas
+empresas locales”
+
+Integrantes:
+Pérez Ledezma José Alexander
+Sánchez Garay Eduardo Miguel
+ID del proyecto:
+PROY-SGE-2025-01
+
+Fecha del informe:
+11 de julio de 2025
+Versión del documento:
+v3.0
+Gerente del Proyecto:
+Jose Perez Ledezma
+
+1
+
+Índice
+1. Acta de Constitución del Proyecto ....................................... 1
+1.1 Descripción del Proyecto ..................................................... 2
+1.2 Justificación del Proyecto .................................................. 3
+1.3 Objetivos Medibles del Proyecto ........................................ 4
+1.4 Requerimientos de Alto Nivel del Proyecto ........................... 5
+1.5 Restricciones del Proyecto ................................................. 6
+1.6 Supuestos del Proyecto ...................................................... 6
+1.7 Factores Críticos de Éxito .................................................. 7
+1.8 Riesgos de Alto Nivel .......................................................... 7
+1.9 Hitos del Proyecto ............................................................... 7
+1.10 Presupuesto del Proyecto .................................................. 8
+1.11 Criterios de Aceptación del Proyecto .................................. 8
+1.12 Director del Proyecto ......................................................... 9
+1.13 Patrocinador del Proyecto ................................................. 9
+1.14 Principales Interesados ...................................................... 9
+2. Plan para la Dirección del Proyecto ....................................... 8
+2.1 Plan de Gestión de la Integración ......................................... 10
+2.1.1 Metodología de Integración ............................................ 10
+2.1.2 Procesos de Control Integrado ........................................ 11
+2.1.3 Criterios de Aceptación de Entregables .............................. 11
+2.2 Plan de Gestión del Alcance ............................................... 12
+2.2.1 Definición del Alcance del Proyecto .................................. 12
+2.2.2 Proceso de Control del Alcance ....................................... 13
+2.2.3 Verificación del Alcance .................................................. 13
+2.2.4 Estructura de Desglose del Trabajo .................................... 14
+2.3 Plan de Gestión del Cronograma .......................................... 15
+2.4 Plan de Gestión de Costos ................................................... 17
+2.5 Plan de Gestión de Calidad .................................................. 19
+2.6 Plan de Gestión de Recursos ............................................... 20
+2.7 Plan de Gestión de Comunicaciones ..................................... 22
+2.8 Plan de Gestión de Riesgos .................................................. 23
+2.9 Adquisiciones ................................................................ 24
+2.10 Plan de Gestión de los Interesados ...................................... 24
+3. Ejecución del Proyecto ...................................................... 25
+3.1 Desarrollo del Producto (Software) ....................................... 26
+3.2 Coordinación de Personas y Recursos .................................. 30
+3.3 Implementación de los Planes de Calidad y Comunicación ....... 32
+3.4 Gestión de las Expectativas de los Interesados ...................... 34
+4. Anexos ....................................................................... 36
+Anexo A – Diagrama de Contexto del Sistema ................................ 37
+
+2
+
+Anexo B – Mapa de Stakeholders .................................................. 38
+Anexo C – Estructura de Desglose del Trabajo (EDT) ..................... 39
+Anexo D – Cronograma del Proyecto (Diagrama de Gantt) ........... 40
+Anexo E – Matriz RACI ................................................................. 41
+Anexo F – Registro de Riesgos .................................................... 42
+Anexo G – Casos de Uso del Sistema ........................................... 43
+Anexo H – Diagramas Técnicos .................................................. 44
+Anexo I – Mockups y Capturas del Sistema ................................... 45
+Anexo J – Resultados de Pruebas ................................................. 46
+Anexo K – Actas de Reunión y Comunicaciones ............................ 47
+Anexo L – Manual de Usuario y Manual Técnico ............................ 48
+Agradecimientos y cierre .............................................................. 49
+
+3
+
+Informe Final: Implementación de un software de
+gestión digital para optimizar los procesos en
+pequeñas empresas locales
+Informe Final: Implementación de un software de gestión digital para optimizar los
+procesos en pequeñas empresas locales
+1. Acta de Constitución del Proyecto
+1.1 Descripción del Proyecto
+El proyecto consiste en el diseño y desarrollo de un sistema web de gestión empresarial
+enfocado en digitalizar y automatizar procesos clave de pequeñas empresas locales
+(gestión de inventarios, facturación electrónica, atención al cliente, etc.). A través de esta
+plataforma se facilitará la creación de perfiles de empresa, la entrada y seguimiento de
+datos operativos, y la generación de reportes analíticos para apoyar la toma de decisiones.
+Se espera entregar una herramienta funcional que mejore la eficiencia operativa, reduzca
+errores manuales y mejore la experiencia del cliente. El equipo de proyecto estará
+conformado por dos desarrolladores (José Pérez y Eduardo Sánchez) bajo la coordinación
+del gerente de proyecto (José Pérez Ledezma) y con apoyo institucional del patrocinador
+(Diaz Pulido José Arturo).
+1.2 Justificación del Proyecto
+El diagnóstico inicial reveló que gran parte de las pequeñas empresas locales aún usan
+procesos manuales y hojas de cálculo obsoletas, lo que genera retrasos, errores y pérdida
+de clientes. Por ejemplo, el 78% de las empresas encuestadas dedicaba aproximadamente
+5 horas semanales a corregir errores manuales, y el 40% reportó pérdida de clientes por
+demoras en facturación. Un sistema digitalizado de gestión permite reducir tiempos de
+procesamiento, disminuir errores de inventario y aumentar la satisfacción del cliente,
+como evidencian los casos de negocio preliminares (p. ej., reducción estimada del 50%
+en tiempos de pedido y crecimiento del 15% en ingresos netos). En este contexto, el
+proyecto es pertinente porque ofrece una solución técnica asequible (aprovechando
+tecnologías de código abierto) y adecuada a la escala de estas empresas, contribuyendo
+además al desarrollo local y a la modernización de la economía regional.
+1.3 Objetivos Medibles del Proyecto
+•
+
+Entregar una plataforma web funcional con los módulos de inventario, ventas
+y reportes analíticos, cumpliendo al menos el 90% de los requerimientos
+
+4
+
+definidos. (Criterio:
+requerimientos).
+
+porcentaje
+
+de
+
+funcionalidades
+
+implementadas
+
+vs.
+
+•
+
+Obtener una calificación de satisfacción del usuario (dueños/empleados de las
+empresas piloto) de al menos 4/5 en encuestas tras la fase piloto. (Criterio:
+promedio en encuesta de satisfacción).
+
+•
+
+Completar el desarrollo e implementación en el plazo estipulado (hasta fin de
+año), manteniendo el presupuesto máximo de S/. 300. (Criterio: cumplimiento de
+cronograma y control de costos).
+
+1.4 Requerimientos de Alto Nivel del Proyecto
+•
+
+Requerimientos Funcionales: Gestión de inventarios (registro y actualización de
+productos); facturación electrónica integrada; módulo de atención al cliente
+(registro de solicitudes y comentarios); generador de reportes (ventas por
+producto, inventario restante, tendencias de ventas); panel administrativo para
+control de usuarios y datos de la empresa.
+
+•
+
+Requerimientos No Funcionales: Interfaz web amigable y responsiva (accesible
+desde dispositivos móviles); seguridad en la gestión de datos y autenticación de
+usuarios; desempeño adecuado (tiempos de carga de página <3 segundos); alta
+disponibilidad (tiempo de actividad >99%); cumplimiento de normativas de
+protección de datos personales.
+
+1.5 Restricciones del Proyecto
+•
+
+Presupuesto Máximo: S/. 300. Este presupuesto incluye costos de infraestructura
+mínima (dominio, hosting, licencias básicas) y consumibles (material de
+capacitación o promoción). Se limitará el uso de tecnologías gratuitas o de código
+abierto.
+
+•
+
+Duración Límite: El proyecto deberá completarse en un periodo no mayor a 6
+meses desde su inicio oficial.
+
+•
+
+Recursos Humanos: Equipo pequeño (2 desarrolladores a tiempo parcial) que
+también realizarán pruebas, documentación y capacitación, lo que puede limitar la
+velocidad de ejecución.
+
+•
+
+Tecnología: Uso preferente de herramientas y plataformas de fácil acceso (React,
+Node.js, MySQL u equivalentes de bajo costo); depender de servicios en la nube
+básicos para el despliegue.
+
+•
+
+Alcance: No se desarrollará inicialmente una aplicación móvil nativa ni se
+integrará con sistemas externos complejos.
+5
+
+1.6 Supuestos del Proyecto
+•
+
+Las empresas participantes contarán con conexión a Internet estable y disponible.
+
+•
+
+Los usuarios finales (dueños y empleados) estarán dispuestos a participar en
+pruebas y capacitaciones.
+
+•
+
+Se mantendrán estables las versiones de las tecnologías seleccionadas (p. ej.,
+frameworks web) durante el ciclo de desarrollo.
+
+•
+
+El patrocinador institucional brindará apoyo logístico (ej. facilitación de contactos
+con empresas piloto) y validación periódica de avances.
+
+1.7 Factores Críticos de Éxito
+•
+
+Cumplimiento de los hitos clave en tiempo y forma (desde la aceptación del
+proyecto hasta la entrega del sistema).
+
+•
+
+Alta participación y retroalimentación de los usuarios finales durante las pruebas
+(lo que asegura que el producto final atienda sus necesidades).
+
+•
+
+Mantenimiento de la calidad técnica (pruebas suficientes, buena documentación,
+código versionado), lo que garantiza un sistema confiable.
+
+•
+
+Control efectivo del alcance y la comunicación clara con el patrocinador para
+evitar retrasos o cambios de última hora.
+
+1.8 Riesgos de Alto Nivel
+•
+
+Riesgo Tecnológico: Incompatibilidades o fallas de integración al usar distintas
+tecnologías (frameworks front-end/back-end o servicios en la nube).
+
+•
+
+Riesgo de Aceptación: Resistencia al cambio por parte de los usuarios, quienes
+pueden preferir los métodos tradicionales (hojas de cálculo).
+
+•
+
+Riesgo de Cronograma: Subestimación del tiempo necesario para optimizar el
+rendimiento (por ejemplo, consultas de base de datos complejas).
+
+•
+
+Riesgo Financiero: Fluctuación de costos inesperados de servicios (ej., licencias
+o servidores) dentro del limitado presupuesto.
+
+•
+
+Riesgo de Recursos: Baja disponibilidad del equipo (ambos desarrolladores
+realizan otras tareas académicas/laborales), lo que podría retrasar las entregas.
+
+1.9 Hitos del Proyecto
+
+6
+
+1. Inicio del Proyecto: Aprobación del acta de constitución por parte del
+patrocinador.
+2. Entregable Sprint 0: Roles definidos, Backlog inicial creado, herramientas
+seleccionadas.
+3. Entrega Módulo de Inventario (Sprint 1).
+4. Entrega Módulo de Ventas/Facturación (Sprint 2).
+5. Entrega Módulo de Reportes Analíticos (Sprint 3).
+6. Integración y pruebas finales (Sprint 4).
+7. Implementación piloto y capacitación (Sprint 5).
+8. Cierre del Proyecto: Entrega de informe final, manuales y lanzamiento piloto
+completado.
+(Diagrama de Gantt o Cronograma detallado en los anexos para visualizar estos hitos y
+su secuencia.)
+1.10 Presupuesto del Proyecto
+El presupuesto total del proyecto está restringido a S/. 300. Se presenta a continuación
+una estimación simplificada de la distribución de costos:
+Concepto
+Monto Estimado (S/.)
+Servicios en la nube (hosting básico) 120
+Dominio web
+30
+Licencias Herramientas
+50
+Capacitación/Documentación
+50
+Contingencias
+50
+Total
+300
+(Nota: Dado el presupuesto ajustado, el equipo es voluntario y los costos de personal se
+consideran 0. Se priorizará el uso de recursos gratuitos y soporte académico en especie.)
+1.11 Criterios de Aceptación del Proyecto
+Responsable de aprobación formal del proyecto:
+Nombre: Diaz Pulido José Arturo
+Rol: Docente de la UNT y Patrocinador del Proyecto
+Criterios de aprobación:
+•
+
+El sistema debe cumplir al menos el 90% de los requerimientos funcionales
+definidos.
+7
+
+•
+
+Se habrá realizado exitosamente una implementación piloto en empresas
+seleccionadas.
+
+•
+
+La encuesta de satisfacción de usuarios al final de la fase piloto debe arrojar una
+calificación promedio ≥4/5.
+
+•
+
+El equipo entregará un informe final del proyecto con documentación completa de
+los procesos, resultados y lecciones aprendidas.
+
+•
+
+El sistema estará desplegado y accesible en un entorno web real (hosting temporal
+o definitivo).
+
+1.12 Director del Proyecto
+Nombre:
+José
+Pérez
+Ledezma.
+Rol:
+Gerente
+del
+Proyecto.
+Como director del proyecto, es responsable de la planificación, coordinación, ejecución y
+supervisión de todas las actividades de desarrollo. Tendrá autoridad técnica y
+organizativa sobre el equipo de desarrollo, siendo el enlace principal con el patrocinador
+y validando cambios de alcance.
+1.13 Patrocinador del Proyecto
+Nombre: Diaz Pulido José Arturo. Rol: Docente de la Universidad Nacional de Trujillo
+y
+Patrocinador.
+El patrocinador brindará respaldo institucional al proyecto, facilitando recursos logísticos
+(por ejemplo, acceso a empresas piloto y redes de contactos) y brindando visibilidad
+académica. Participará en reuniones clave de revisión de avances y validará la aceptación
+formal de los entregables principales.
+1.14 Principales Interesados
+•
+
+Propietarios y gerentes de pequeñas empresas locales: Beneficiarios directos
+del sistema; sus requerimientos y retroalimentación guían el desarrollo del
+software.
+
+•
+
+Empleados de las empresas piloto: Usuarios finales potenciales del sistema; su
+capacitación y aceptación son críticas para el éxito.
+
+•
+
+Equipo de Desarrollo (José Pérez, Eduardo Sánchez): Responsables de
+diseñar, codificar, probar e implementar el software.
+
+•
+
+Patrocinador Académico (Diaz Pulido): Garantiza apoyo institucional y
+supervisa la calidad del proyecto.
+
+8
+
+•
+
+Centro de Innovación/Universidad: Entidad que apoyó la validación del caso de
+negocio; interesada en los resultados para posibles futuras colaboraciones o
+mejoras.
+
+2. Plan para la Dirección del Proyecto
+2.1 Plan de Gestión de la Integración
+2.1.1 Metodología de Integración
+Se adoptará un enfoque ágil híbrido: se aplicará Scrum con iteraciones de 2 semanas,
+apoyado por prácticas estructuradas de gestión (reuniones formales, control de versiones,
+gestión de riesgos). El uso de GitHub permitirá el versionado colaborativo del código y la
+integración continua; las reuniones semanales de seguimiento (scrum diario breve vía
+chat de equipo y reunión semanal de coordinación) asegurarán la integración efectiva de
+los avances. El gerente de proyecto será responsable de orquestar la integración de
+entregables y mantener al día la documentación de alcance e integración.
+2.1.2 Procesos de Control Integrado
+•
+
+Reuniones de seguimiento: el equipo realizará reuniones de progreso semanales
+para revisar estado del proyecto y decidir ajustes.
+
+•
+
+Gestión de cambios: Todo cambio al alcance o a los entregables se registrará vía
+formulario estandarizado y requerirá aprobación. Cambios menores los aprueba el
+gerente; cambios de mayor impacto se someterán a la aprobación del
+patrocinador.
+
+•
+
+Gestión de la configuración: El código fuente se gestionará mediante Git con
+ramificaciones por sprint. Cada entrega principal (final de sprint) se etiquetará en
+el repositorio. La documentación del proyecto (alcance, cronograma, actas) se
+almacenará en Notion (o similar) para mantener versionado de documentos.
+
+2.1.3 Criterios de Aceptación de Entregables
+•
+
+Entregables completan ≥90% de los requerimientos asociados.
+
+•
+
+Cada entregable ha pasado pruebas unitarias y de integración con resultados
+exitosos.
+
+•
+
+Se cuenta con la aprobación técnica del líder de desarrollo.
+
+•
+
+El patrocinador revisa y acepta formalmente cada entrega documentada.
+
+2.2 Plan de Gestión del Alcance
+
+9
+
+2.2.1 Definición del Alcance del Proyecto
+Incluye:
+•
+
+Plataforma web con registro y autenticación de usuarios (empresas y
+administradores).
+
+•
+
+Módulos para inventario (alta, baja y consulta de productos), ventas/facturación
+electrónica, y reportes analíticos (gráficos de ventas, control de stock).
+
+•
+
+Panel administrativo para supervisión general (gestión de usuarios, datos
+maestros).
+
+•
+
+Interfaz responsive compatible con navegadores modernos.
+
+•
+
+Documentación técnica completa (arquitectura, manual de usuario).
+
+No Incluye:
+•
+
+Desarrollo de aplicación móvil nativa.
+
+•
+
+Integración con sistemas externos de pago avanzados.
+
+•
+
+Módulo de videoconferencia o chat interno.
+
+•
+
+Soporte post-piloto más allá de capacitación inicial.
+
+(Ver Estructura de Desglose del Trabajo en los anexos para ilustrar la jerarquía de
+entregables.)
+2.2.2 Proceso de Control del Alcance
+Se mantendrá un backlog de producto priorizado. Solicitudes de cambio se documentarán
+y evaluarán según su impacto en tiempo, costo y calidad. El gerente revisará cambios
+menores en reuniones semanales; los cambios mayores (que afecten significativamente el
+alcance o cronograma) requerirán validación del patrocinador. Todas las decisiones de
+cambio se actualizarán en el documento de alcance y la EDT correspondiente.
+2.2.3 Verificación del Alcance
+•
+
+Revisión de hitos: al término de cada sprint se realizará una demostración
+funcional ante los interesados relevantes (equipo, patrocinador) para verificar el
+cumplimiento de objetivos del sprint.
+
+•
+
+Pruebas de aceptación: cada módulo será validado contra criterios definidos (ej.
+generación correcta de facturas, reporte de inventario actual).
+
+10
+
+•
+
+Aceptación formal: el patrocinador firmará la aceptación al cierre de cada fase
+importante del proyecto.
+
+2.2.4 Estructura de Desglose del Trabajo
+Se elaborará la EDT que descompone el proyecto en fases, entregables y paquetes de
+trabajo. Por ejemplo:
+•
+
+1.0 Administración del Proyecto
+
+•
+
+2.0 Desarrollo del Software
+o
+
+2.1 Módulo Inventario
+
+o
+
+2.2 Módulo Ventas/Facturación
+
+o
+
+2.3 Módulo Reportes
+
+•
+
+3.0 Documentación y Capacitación
+
+•
+
+4.0 Pruebas e Implementación Piloto
+
+(La EDT detallada estará disponible en los anexos.)
+2.3 Plan de Gestión del Cronograma
+2.3.1 Metodología de Programación
+El cronograma se basará en metodología ágil iterativa con sprints de duración fija (2
+semanas) y entregables definidos al final de cada sprint. Se utilizará un diagrama de
+Gantt para visualizar fases y dependencias a alto nivel. La unidad de tiempo serán
+semanas, calculando la duración total estimada en aproximadamente 24 semanas (Sprint
+0 + 5 sprints de desarrollo + tiempos de buffer). Se considerará la ruta crítica de
+actividades para priorizar tareas que puedan retrasar entregas clave.
+2.3.2 Cronograma Maestro
+El cronograma maestro incluirá fases principales (inicio, planificación, ejecución por
+módulos, pruebas piloto, cierre). Por ejemplo:
+•
+
+Sprint 0 (semana 1-2): Inicio, definición de roles, backlog inicial.
+
+•
+
+Sprint 1 (semana 3-4): Desarrollo del módulo de Inventario.
+
+•
+
+Sprint 2 (5-6): Desarrollo del módulo de Ventas/Facturación.
+
+•
+
+Sprint 3 (7-8): Desarrollo del módulo de Reportes.
+
+11
+
+•
+
+Sprint 4 (9-10): Integración de módulos, pruebas unitarias.
+
+•
+
+Sprint 5 (11-12): Pruebas finales, implementación piloto y capacitación.
+
+(Se incluye un Diagrama de Gantt en anexos que refleja estas fases y sus dependencias.)
+2.3.3 Actividades Críticas (Ruta Crítica)
+Las actividades de desarrollo de cada módulo (backend y frontend) se consideran críticas,
+así como las pruebas de integración antes del piloto. Si alguna de estas se retrasa, afectará
+la entrega final. Para mitigarlo, se asignarán recursos prioritarios a tareas en la ruta crítica
+y se mantendrá seguimiento estrecho en cada reunión de avance.
+2.3.4 Gestión de Recursos Temporales
+El equipo empleará herramientas de colaboración (Notion, Discord, Google Calendar)
+para planificar tareas y recordatorios. Se definirá un calendario de sprints y se asignará
+estimación de horas a cada historia de usuario. El avance se monitoreará semanalmente y
+se ajustarán las estimaciones basadas en retroalimentación del equipo.
+2.3.5 Control del Cronograma
+Se realizará un seguimiento quinquenal del cronograma con indicadores como el Índice
+de Desempeño del Cronograma (SPI). En caso de retrasos, se evaluarán acciones
+correctivas (re-asignar tareas, ampliar el equipo temporalmente). Se documentarán
+desviaciones en el informe de progreso.
+2.4 Plan de Gestión de Costos
+2.4.1 Metodología de Estimación
+La estimación se basará en un presupuesto acotado (S/. 300), por lo que se aplicará un
+enfoque top-down: se asignan partidas con un rango fijo. Se contempla además cierto
+margen de contingencia. Las técnicas incluyen analogía con proyectos similares
+reducidos y cálculos paramétricos ligeros (porcentaje del presupuesto total para cada
+categoría).
+2.4.2 Presupuesto Detallado
+El presupuesto se detalla en categorías:
+•
+
+Infraestructura y Hosting: Asignado ~40% (S/. 120) para servicios en la nube
+básicos.
+
+•
+
+Licencias y Dominio: ~S/. 80 (dominio web y posibles suscripciones de
+herramientas colaborativas).
+12
+
+•
+
+Recursos Humanos: S/. 0 (equipo voluntario).
+
+•
+
+Contingencia: S/. 50 reservado para ajustes menores.
+
+•
+
+Capacitación y Documentación: S/. 50 (materiales impresos, talleres iniciales).
+
+Estos montos se suman al total de S/. 300.
+2.4.3 Línea Base de Costos
+Se establece la línea base en S/. 300. Cualquier gasto adicional requerirá autorización del
+patrocinador (debido al rígido presupuesto). El seguimiento presupuestario se hará en una
+hoja de cálculo compartida, con actualizaciones mensuales de gastos reales vs.
+planificados.
+2.4.4 Control de Costos
+•
+
+Métricas: Se utilizarán indicadores como el Índice de Desempeño de Costos
+(CPI).
+
+•
+
+Reportes: Se generarán reportes financieros periódicos (mensuales) comparando
+costo real vs. estimado.
+
+•
+
+Proceso de aprobación de gastos: Todo gasto se documentará con factura o
+comprobante. El gerente revisará internamente, y gastos extraordinarios (no
+planificados) requerirán validación del patrocinador.
+
+2.4.5 Gestión de Riesgos Financieros
+Dado el bajo presupuesto, se mitigará el riesgo de sobrecosto priorizando servicios
+gratuitos y acuerdos académicos (p.ej., créditos universitarios en AWS). Se considerará
+renegociar plazos de pago o buscar patrocinios para software si fuera necesario.
+2.5 Plan de Gestión de Calidad
+El plan de calidad define los criterios y procesos para garantizar un producto confiable:
+•
+
+Criterios de calidad: Al menos 90% de cumplimiento de requisitos funcionales;
+usabilidad ≥4/5; tiempo de carga <3 seg..
+
+•
+
+Aseguramiento de la calidad: Integrar revisiones de código en cada sprint,
+aplicar pruebas automatizadas (unitarias y de integración). Se documentarán los
+casos de prueba en cada iteración.
+
+13
+
+•
+
+Control de la calidad: Se realizará auditoría de código (buscando estándares de
+codificación) y pruebas de desempeño (usando JMeter) para verificar respuesta
+bajo carga.
+
+•
+
+Mejora continua: En cada retrospectiva Scrum se identificarán mejoras para el
+proceso de desarrollo (p.ej., ajustar la definición de “hecho”, mejorar la cobertura
+de pruebas).
+
+2.6 Plan de Gestión de Recursos
+2.6.1 Roles y Responsabilidades
+•
+
+Gerente de Proyecto (José Pérez Ledezma): Planificación general, gestión de
+alcance, seguimiento de cronograma, comunicación con patrocinador y
+stakeholders.
+
+•
+
+Desarrollador Backend (José Pérez): Diseño e implementación de la lógica del
+servidor, bases de datos (por ejemplo, usando NestJS con MySQL), pruebas
+unitarias de servicios.
+
+•
+
+Desarrollador Frontend (Eduardo Sánchez): Diseño e implementación de la
+interfaz de usuario (por ejemplo, con React y Tailwind), experiencia de usuario y
+pruebas de funcionalidad.
+
+•
+
+Patrocinador (Diaz Pulido): Supervisión institucional, validación de entregables
+clave, toma de decisiones en caso de cambios críticos.
+
+(En los anexos se puede presentar una matriz RACI resumida para las tareas
+principales.)
+2.6.2 Matriz RACI (Responsable, Aprobador, Consultado, Informado)
+Tarea
+Definir requisitos
+Desarrollo
+software
+Pruebas
+Despliegue piloto
+
+Responsable Aprobador Consultado
+Equipo Dev Patrocinador Empresas
+piloto
+de Equipo Dev Director
+Patrocinador
+Equipo Dev
+Equipo Dev
+
+Informado
+Director
+de
+proyecto
+Empresas piloto
+
+Director
+Usuarios piloto Patrocinador
+Patrocinador Patrocinador
+Empresas piloto
+
+2.6.3 Adquisición de Recursos Humanos y Materiales
+El equipo de desarrollo es interno (estudiantes) y no requerirá contratación externa. Para
+recursos materiales:
+
+14
+
+•
+
+Contratar servicios de hosting web (plan básico mensual).
+
+•
+
+Registrar un dominio.
+
+•
+
+Adquirir licencias educacionales necesarias (si las hay).
+
+Se seleccionarán proveedores locales o académicamente respaldados buscando la mejor
+relación costo-beneficio. Todo contrato será revisado por el gerente de proyecto y
+aprobado por el patrocinador.
+2.7 Plan de Gestión de Comunicaciones
+•
+
+Canales de Comunicación: Reuniones diarias informales vía Discord o similar
+para sincronizar al equipo; Notion para gestión de tareas y seguimiento de
+backlog; correo electrónico para reportes quincenales al patrocinador.
+
+•
+
+Frecuencia de Reportes: El gerente elaborará un reporte de avance cada dos
+semanas después de cada sprint, que incluirá cumplimientos de objetivos, riesgos
+emergentes y métricas clave (SPI, CPI).
+
+•
+
+Protocolo de Escalamiento: Cualquier impedimento grave deberá comunicarse
+inmediatamente (en menos de 24 horas) al gerente de proyecto; problemas críticos
+se escalonarán al patrocinador en un plazo máximo de 72 horas.
+
+•
+
+Control y Monitoreo: Se documentarán actas de decisiones de las reuniones
+importantes y se compartirán con todos los interesados relevantes para asegurar
+transparencia.
+
+2.8 Plan de Gestión de Riesgos
+•
+
+Metodología: Se mantendrá un registro de riesgos que incluye identificación,
+evaluación (probabilidad e impacto), y planes de respuesta (evitar, mitigar,
+aceptar, transferir).
+
+•
+
+Categorías de Riesgo: Técnico (tecnologías y herramientas), de proyecto
+(tiempo, alcance), organizativo (recursos, financieros), externos (cambios
+regulatorios).
+
+•
+
+Roles en Riesgos: El gerente es responsable de liderar las acciones de mitigación;
+el equipo de desarrollo monitorea continuamente riesgos técnicos; el patrocinador
+se encarga de riesgos institucionales.
+
+•
+
+Registro de Riesgos: Se actualizará en cada sprint con nuevas entradas o cambios
+de estado, revisándose en las retrospectivas.
+
+15
+
+•
+
+Respuesta a Riesgos: Para cada riesgo se definirá una estrategia; p. ej., ante baja
+adopción de usuarios, se planificarán sesiones de capacitación adicionales; ante
+retrasos técnicos, se reasignarán tareas o se ajustarán iteraciones.
+
+(Se incluirá una Matriz de Probabilidad e Impacto y el registro de riesgos en los
+anexos.)
+2.9 Adquisiciones
+2.9.1 Elementos a adquirir
+•
+
+Dominios web y servidores: Compra de dominio institucional y contratación de
+plan básico en proveedor de cloud.
+
+•
+
+Herramientas de desarrollo: Suscripciones educativas de plataformas (p. ej.,
+Figma Pro) si no están disponibles de forma gratuita.
+
+•
+
+Servicios profesionales: Contratación esporádica de asesoría contable para
+facturación electrónica (consultoría externa de bajo costo, p.ej., S/. 20).
+
+2.9.2 Tipo de contrato
+Se preferirán contratos de servicio a corto plazo (mensualidades o pay-as-you-go) y
+licencias por suscripción anual. No se usarán contratos a largo plazo por la naturaleza
+académica y experimental del proyecto.
+2.9.3 Criterios de selección de proveedores
+•
+
+Costo: Debe ser asequible dentro del presupuesto.
+
+•
+
+Calidad y soporte: Se priorizarán proveedores con buena reputación o
+recomendados académicamente.
+
+•
+
+Flexibilidad: Posibilidad de ajustar el plan o cancelar sin penalidad.
+
+•
+
+Compatibilidad: Que ofrezcan APIs o facilidades para integrar con otras
+herramientas.
+
+(Para hosting se evaluará precio, facilidad de despliegue (compatibilidad con
+Node.js/MySQL) y estabilidad del servicio.)
+2.10 Plan de Gestión de los Interesados (Stakeholders)
+2.10.1 Plan de gestión de los interesados
+Se clasificará a los interesados según su influencia y nivel de interés. A cada grupo se
+definirá un plan de comunicación:
+16
+
+•
+
+Empresas pilotos (Alto interés, Alta influencia): Reuniones periódicas de
+seguimiento (cada sprint), sesiones de retroalimentación y pruebas de usuario.
+
+•
+
+Equipo de Proyecto: Comunicación diaria a través de herramientas de
+colaboración; reuniones formales quincenales para planificación y revisión.
+
+•
+
+Patrocinador: Reportes formales al finalizar cada sprint, y reuniones de revisión
+mayores al finalizar cada fase significativa (por ejemplo, fin del módulo de
+inventario, fin del piloto).
+
+•
+
+Comunidad Académica/Universidad: Informes resumidos al finalizar el
+proyecto y posible difusión de los resultados (eventos o publicaciones internas).
+
+2.10.2 Registro de interesados y estrategias de involucramiento
+Se mantendrá un registro dinámico de stakeholders con datos de contacto, intereses y
+estrategias de comunicación. Se implementarán las siguientes estrategias:
+•
+
+Involucrar usuarios finales mediante encuestas y pruebas piloto tempranas para
+asegurar que el producto responda a sus necesidades.
+
+•
+
+Informar regularmente al patrocinador sobre los progresos y decisiones claves.
+
+•
+
+Consulta a expertos (p.ej., asesores de tecnología) en caso de dudas técnicas,
+manteniendo su rol como consultados en la RACI.
+
+•
+
+Coordinación con entidades de apoyo (p.ej., Centro de Innovación) para
+posibles recursos adicionales o difusión del proyecto.
+
+(Ver registro completo de interesados en anexos.)
+3. Ejecución del Proyecto
+3.1 Desarrollo del Producto (Software)
+Sprint 0: Inicio del Proyecto
+1. Definición de Roles y Responsabilidades: Se formalizaron los roles clave
+(Gerente de Proyecto: José Pérez; Desarrolladores: José Pérez y Eduardo
+Sánchez; Patrocinador: Diaz Pulido). Se establecieron canales de comunicación
+(Discord para coordinación diaria, Notion para gestión de tareas, correo
+institucional para reporte a patrocinador).
+2. Creación del Product Backlog Inicial: Se recopilaron y priorizaron las Historias
+de Usuario de alto nivel, enfocadas en módulos básicos:
+
+17
+
+o
+
+HU1: “Como dueño de empresa, quiero registrar y autenticar usuarios para
+proteger el acceso.”
+
+o
+
+HU2: “Como empleado, quiero ingresar y actualizar productos en el
+inventario.”
+
+o
+
+HU3: “Como empleado, quiero registrar ventas y emitir facturas
+electrónicas.”
+
+o
+
+HU4: “Como dueño, quiero generar reportes de ventas y de inventario
+para analizar desempeño.”
+
+3. Selección de Herramientas: Se decidió usar Notion para el backlog y gestión de
+tareas; GitHub para control de versiones; Figma para prototipado de interfaces;
+JMeter para pruebas de carga (aplicación posterior).
+Resultados del Sprint 0: Backlog aprobado por el equipo y patrocinador; entornos de
+desarrollo configurados (repositorio inicial con estructura básica de directorios);
+prototipos de UI esbozados en Figma para revisión inicial.
+Sprint 1: Módulo de Inventario
+•
+
+Historias priorizadas: HU2 (gestión de productos); HU1 (autenticación básica
+de usuarios).
+
+•
+
+Tareas técnicas: Configuración del backend (estructura de base de datos MySQL
+para productos y usuarios); implementación de API REST para
+alta/baja/modificación de productos; diseño de pantallas de registro e inicio de
+sesión; implementación de la lógica de login; pruebas unitarias iniciales.
+
+•
+
+Durante el Sprint: El desarrollador backend (José) enfocó en el modelo de datos
+y APIs, mientras que el frontend (Eduardo) construyó las pantallas responsive en
+React. Se realizaron daily standups breves cada mañana (Canal Discord) y se
+actualizó el tablero en Notion con el avance de tareas.
+
+•
+
+Revisión del Sprint: Se demostró un prototipo funcional donde los usuarios
+pueden registrarse y acceder al sistema, y registrar productos en inventario. Se
+validaron las pruebas unitarias con cobertura inicial.
+
+•
+
+Retrospectiva: Se identificó que la validación de formularios cliente/backend
+necesitaba más pruebas. Para Sprint 2 se acordó incluir tests de integración
+adicionales y mejorar la documentación de la API.
+
+Sprint 2: Módulo de Ventas y Facturación
+
+18
+
+•
+
+Historias priorizadas: HU3 (registro de ventas y facturas); HU1 (seguridad de
+datos de clientes).
+
+•
+
+Tareas técnicas: Extensión del backend con entidades de ventas, facturación y
+relaciones con inventario; integración con la API de facturación electrónica de la
+SUNAT (simulada); diseño de interfaz para registrar ventas (selección de
+productos e ingreso de cliente); validaciones de stock; generación de reporte PDF
+de factura.
+
+•
+
+Durante el Sprint: Se utilizó la librería Node para generación de PDF; se simuló
+el webservice de SUNAT. El equipo coordinó para testear el flujo completo: crear
+una venta resta stock e imprime factura. Se actualizaron historias en Notion
+conforme a la finalización.
+
+•
+
+Revisión del Sprint: Se presentó la funcionalidad donde el usuario registra una
+venta, se verifica stock, se emite factura y se reduce inventario. Los casos de
+prueba manuales confirmaron la integridad del proceso.
+
+•
+
+Retrospectiva: Se decidió optimizar la consulta de stock para manejar varias
+ventas simultáneas, y planificar un test de carga mínimo con JMeter en el
+siguiente sprint.
+
+Sprint 3: Módulo de Reportes Analíticos
+•
+
+Historias priorizadas: HU4 (reportes de ventas e inventario).
+
+•
+
+Tareas técnicas: Creación de consultas agregadas (p.ej., ventas por mes,
+productos más vendidos); implementación de gráficos en frontend (biblioteca de
+chart.js o similar); diseño de panel de reportes con filtros por fecha; pruebas de
+funcionalidad y rendimiento.
+
+•
+
+Durante el Sprint: Se definieron métricas clave (ingresos por periodo, nivel de
+stock actual) y se utilizaron componentes de gráfico para visualización. Se
+emplearon datos de prueba para validar reportes.
+
+•
+
+Revisión del Sprint: El sistema mostraba dashboards interactivos de ventas y
+niveles de inventario. Se verificó que los datos desplegados correspondían
+correctamente a las transacciones registradas.
+
+•
+
+Retrospectiva: Se planificó reducir la latencia de carga de datos (actualmente
+~3.5s) optimizando consultas; también se consideró mejorar la usabilidad
+añadiendo exportación de reportes a Excel o PDF en posteriores iteraciones.
+
+Sprint 4: Integración Final y Pruebas
+
+19
+
+•
+
+Historias priorizadas: Integración completa de módulos e interfaz final; pruebas
+de usabilidad.
+
+•
+
+Tareas técnicas: Refinamiento de la interfaz global (navegación entre módulos),
+pruebas de integración cruzada, implementación de pruebas de carga básicas con
+JMeter, ajustes de desempeño (cacheo, optimización de imágenes).
+
+•
+
+Durante el Sprint: Se realizaron iteraciones de pruebas integrales para asegurar
+que el login lleva correctamente a inventario/ventas/reportes. Se organizó una
+sesión de prueba con un grupo de usuarios piloto (empleados de una empresa
+local) para retroalimentación.
+
+•
+
+Revisión del Sprint: Se entregó una versión consolidada del sistema con todos
+los módulos accesibles desde un panel único. Los usuarios piloto completaron un
+flujo de ejemplo satisfactoriamente.
+
+•
+
+Retrospectiva: Se documentó la necesidad de implementar un plan de soporte
+post-lanzamiento (capacitaciones) y se programó una última mejora de
+rendimiento (queries).
+
+Sprint 5: Piloto e Implementación Final
+•
+
+Historias priorizadas:
+documentación.
+
+Implementación
+
+en
+
+entorno
+
+real;
+
+capacitación;
+
+•
+
+Tareas técnicas: Despliegue del sistema en servidor de producción en la nube;
+migración de datos iniciales (listas de productos); realización de talleres de
+capacitación para los usuarios finales; preparación de manuales de usuario.
+
+•
+
+Durante el Sprint: Se monitorizó el despliegue de AWS (o similar) y se
+resolvieron incidentes menores de configuración. El patrocinador coordinó con las
+empresas para programar sesiones de formación. Se redactaron manuales breves
+en PDF.
+
+•
+
+Revisión del Sprint: Se concluyó con éxito la capacitación y las empresas
+comenzaron a usar el sistema en un entorno piloto. Se recabaron encuestas de
+satisfacción inicial (5/5 en usabilidad) y comentarios positivos.
+
+•
+
+Retrospectiva: Se destacó que la curva de aprendizaje fue mitigada con la
+capacitación práctica. Se recomendó mantener un canal de soporte (chat o correo)
+para resolver dudas posteriores.
+
+(Diagrama de despliegue que muestre el entorno en la nube donde corre el sistema.)
+3.2 Coordinación de Personas y Recursos
+20
+
+Durante la ejecución se aplicó el modelo Scrum: cada sprint contó con planificación,
+reuniones diarias breves (stand-up), revisión y retrospectiva. El gerente de proyecto
+facilitó la comunicación, equilibrió la carga de trabajo (p.ej., reasignando tareas cuando
+uno de los desarrolladores estuvo menos disponible), y aseguró la coordinación con el
+patrocinador. Las herramientas colaborativas (Notion, Discord, GitHub) permitieron
+mantener visibilidad del avance y gestionar eficientemente las tareas.
+3.3 Implementación de los planes de calidad y comunicación
+En cada iteración se integraron actividades de aseguramiento de calidad: pruebas
+unitarias en cada módulo, revisión de código mutua (peer review) y pruebas de
+integración al final de sprint. Se utilizó JMeter para al menos dos pruebas de carga
+preliminares, identificando cuellos de botella (latencia en consultas SQL) que luego se
+corrigieron. Respecto a la comunicación, se siguió el plan: informes quincenales al
+patrocinador, actas de reunión documentadas, y se mantuvo informado a todo el equipo
+de las decisiones clave. Esto permitió reaccionar ágilmente ante problemas (p.ej., retrasos
+en pruebas) con planes de acción definidos.
+3.4 Gestión de las expectativas de los interesados
+Se mantuvo constante comunicación con los usuarios finales: se realizaron
+demostraciones formales al cierre de cada sprint para que vieran el progreso y expresaran
+sus necesidades, ajustando el backlog cuando fue necesario. El patrocinador estuvo
+involucrado en revisiones de hitos, validando entregas. Tras el piloto, se presentó un
+informe de resultados preliminares a todas las partes interesadas, detallando beneficios
+observados (p. ej., reducción de tiempos de facturación) y próximos pasos recomendados
+(go-live final, soporte continuo).
+(En resumen, la ejecución siguió fielmente el plan establecido, adaptándose a cambios
+menores gracias a la metodología ágil. Los sprints detallados arriba muestran la
+evolución iterativa del producto y la aplicación de prácticas de gestión de calidad y
+comunicación descritas en el plan.)
+
+21
+
+Anexos
+Anexo A – Diagrama de Contexto del Sistema
+
+Descripción:
+El siguiente diagrama muestra el contexto general del sistema de gestión digital
+desarrollado para pequeñas empresas locales. Representa a los actores externos que
+interactúan directamente con el sistema y los principales flujos de información. Sirve
+para comprender el alcance funcional del sistema sin entrar en detalles técnicos.
+Actores identificados:
+•
+
+•
+
+•
+
+Dueño de empresa:
+o
+
+Revisa reportes.
+
+o
+
+Gestiona usuarios.
+
+o
+
+Supervisa las operaciones de venta e inventario.
+
+Empleado:
+o
+
+Registra productos y actualiza el inventario.
+
+o
+
+Registra ventas y genera comprobantes.
+
+Administrador del sistema:
+o
+
+Configura parámetros del sistema.
+
+o
+
+Realiza mantenimiento básico y da soporte técnico.
+
+Entradas/Salidas clave:
+•
+
+Ingreso de productos.
+
+•
+
+Registro de ventas.
+
+22
+
+•
+
+Consulta de reportes.
+
+•
+
+Alta/baja de usuarios.
+
+•
+
+Notificaciones internas (alertas de stock, confirmaciones).
+
+Anexo B – Mapa de Stakeholders
+
+Descripción:
+Este anexo presenta el análisis y clasificación de los principales interesados del proyecto
+mediante una matriz de poder e interés. Esta herramienta permite definir estrategias
+adecuadas de comunicación y gestión para cada tipo de stakeholder durante el ciclo de
+vida del proyecto.
+Ejes del análisis:
+•
+
+Poder alto / bajo: Capacidad del stakeholder para influir en el proyecto
+(financieramente, políticamente, técnicamente).
+
+•
+
+Interés alto / bajo: Grado en el que al stakeholder le afecta el resultado del
+proyecto.
+
+Matriz de Poder/Interés
+Grupo
+
+Poder Interés Estrategia de Gestión
+
+23
+
+Patrocinador (Díaz Pulido)
+
+Alto
+
+Alto
+
+Dueños de empresas piloto
+
+Medio Alto
+
+Mantener informados y activos
+
+Empleados de empresas piloto
+
+Bajo
+
+Medio
+
+Involucrar gradualmente
+
+Equipo de desarrollo (José, Eduardo) Alto
+
+Alto
+
+Coordinar constantemente
+
+Universidad / Centro de Innovación
+
+Medio
+
+Mantener satisfechos
+
+Alto
+
+Gestionar de cerca
+
+Anexo C – Estructura de Desglose del Trabajo (EDT)
+
+Descripción:
+La EDT (WBS – Work Breakdown Structure) es una descomposición jerárquica del
+proyecto en entregables y tareas manejables. Ayuda a organizar y planificar mejor el
+alcance del proyecto, asignar recursos y facilitar el seguimiento del avance.
+En este proyecto, la EDT está organizada en 4 niveles principales:
+Estructura general del proyecto
+1.0 Administración del Proyecto
+1.1 Acta de constitución
+
+24
+
+1.2 Planificación del proyecto
+1.3 Seguimiento y control
+2.0 Desarrollo del Sistema
+2.1 Módulo Inventario
+2.1.1 Backend (API de productos)
+2.1.2 Frontend (pantalla de productos)
+2.1.3 Pruebas funcionales
+2.2 Módulo Ventas
+2.2.1 Backend (registro de ventas, control de stock)
+2.2.2 Frontend (facturación)
+2.2.3 Reporte PDF
+2.3 Módulo Reportes
+2.3.1 Consultas analíticas
+2.3.2 Dashboards interactivos
+2.3.3 Exportación a PDF
+3.0 Capacitación y Documentación
+3.1 Manual de usuario
+3.2 Manual técnico
+3.3 Talleres de formación
+4.0 Pruebas e Implementación Piloto
+4.1 Pruebas de rendimiento (JMeter)
+4.2 Implementación en empresas piloto
+4.3 Encuestas de satisfacción
+
+25
+
+Anexo D – Cronograma del Proyecto (Diagrama de Gantt)
+
+Descripción:
+Este anexo presenta el cronograma general del proyecto usando una estructura de fases y
+sprints, con sus respectivas duraciones estimadas en semanas. El diagrama de Gantt
+ayuda a visualizar el orden y la dependencia de actividades clave, y a planificar el uso del
+tiempo de manera efectiva.
+Tabla del cronograma general (resumen)
+Fase / Sprint
+
+Fechas
+estimadas
+
+Duración Actividades principales
+
+Sprint 0 – Inicio del 01 – 07 mayo 1 semana
+Proyecto
+2025
+
+Roles, backlog, herramientas,
+prototipo inicial
+
+Sprint 1 – Módulo 08 – 21 mayo 2
+Inventario
+2025
+semanas
+
+Backend + frontend + pruebas
+básicas
+
+Sprint 2 – Módulo 22 mayo – 04 2
+Ventas
+junio 2025
+semanas
+
+Registro de ventas, facturación,
+control de stock
+
+Sprint 3 – Módulo 05 – 18 junio 2
+
+Dashboards,
+
+26
+
+consultas,
+
+Reportes
+
+2025
+
+semanas
+
+Sprint 4 – Integración 19 junio – 02 2
+y pruebas
+julio 2025
+semanas
+
+exportación
+Test de carga, correcciones,
+revisión final
+
+Actividades críticas (Ruta crítica):
+•
+
+Desarrollo e integración de módulos (sprints 1 a 4).
+
+•
+
+Capacitación y validación del sistema con usuarios reales.
+
+•
+
+Validación final por el patrocinador.
+
+Anexo E – Matriz RACI
+Descripción:
+La matriz RACI detalla las responsabilidades asignadas a los principales miembros del
+equipo del proyecto. Esta herramienta ayuda a clarificar roles y prevenir conflictos o
+solapamiento de funciones durante la ejecución del proyecto.
+R
+(Responsible):
+Ejecuta
+la
+tarea.
+A (Accountable): Toma la decisión final y aprueba el resultado.
+C (Consulted): Es consultado para aportar experiencia o criterio.
+I (Informed): Es informado del avance o resultado.
+Tabla RACI del proyecto
+Actividad / José
+Entregable
+Pérez<br>(Backe
+nd / Líder)
+
+Eduardo
+Sánchez<br>(Fronte
+nd / UI)
+
+Díaz
+Pulido<br>(Patrocinad
+or)
+
+Acta
+de R
+constitución
+del proyecto
+
+I
+
+A
+
+Gestión del R
+backlog
+y
+priorización
+
+R
+
+C
+
+Desarrollo
+R
+del módulo
+
+R
+
+I
+
+27
+
+de inventario
+Desarrollo
+R
+del módulo
+de ventas
+
+R
+
+I
+
+Desarrollo
+R
+del módulo
+de reportes
+
+R
+
+I
+
+Pruebas
+funcionales
+
+R
+
+R
+
+I
+
+Pruebas
+de R
+rendimiento
+(JMeter)
+
+I
+
+I
+
+Capacitación R
+y
+documentació
+n
+
+R
+
+C
+
+Informe final R
+del proyecto
+
+I
+
+A
+
+Aprobación
+de
+entregables
+clave
+
+I
+
+A
+
+I
+
+Notas:
+•
+
+El líder técnico (José Pérez) tiene la mayor carga operativa y coordinadora.
+
+•
+
+Eduardo Sánchez asume corresponsabilidad en diseño y desarrollo frontend.
+
+•
+
+El patrocinador aprueba formalmente el proyecto y sus hitos.
+
+Anexo F – Registro de Riesgos
+
+28
+
+Descripción:
+Este anexo documenta los principales riesgos identificados durante la planificación del
+proyecto. Cada riesgo está categorizado según su origen, y se evalúan su probabilidad,
+impacto y estrategia de respuesta.
+
+Tabla de Registro de Riesgos
+ID Descripción del Categoría Probabilidad Impacto Nivel
+Riesgo
+
+Estrategia
+Respuesta
+
+R1 Retrasos
+por Técnico
+curva
+de
+aprendizaje en
+herramientas
+(JMeter, Figma)
+
+Alta
+
+Media
+
+Alto
+
+Capacitación
+temprana
+y
+documentación
+accesible
+
+R2 Baja
+Recursos
+disponibilidad
+del equipo por
+otras actividades
+
+Media
+
+Alta
+
+Alto
+
+Reasignación de
+tareas,
+reuniones
+semanales
+
+R3 Subestimación
+Técnico
+de tiempos para
+pruebas
+de
+rendimiento
+
+Media
+
+Alta
+
+Alto
+
+Incluir buffer en
+cronograma y
+priorizar
+pruebas
+
+R4 Fallos
+de Técnico
+integración
+entre módulos
+
+Baja
+
+Alta
+
+Medio Pruebas
+integración
+tempranas
+frecuentes
+
+R5 Cambios
+de Alcance
+alcance
+por
+expectativas no
+definidas
+
+Media
+
+Media
+
+Medio Gestión formal
+de
+cambios,
+validación
+continua
+
+R6 Pérdida
+de Gestión
+información por
+errores
+en
+versionado
+
+Baja
+
+Alta
+
+Medio Uso de GitHub
+con
+buenas
+prácticas
+de
+commits
+
+29
+
+de
+
+de
+y
+
+Criterios de Nivel de Riesgo (semáforo):
+•
+
+Alto (
+
+•
+
+Medio (
+
+•
+
+Bajo (
+
+): Riesgo crítico. Requiere acción inmediata.
+): Riesgo importante. Requiere monitoreo constante.
+): Riesgo menor. Solo vigilancia ocasional.
+
+Anexo G – Casos de Uso del Sistema
+
+Descripción:
+Este anexo describe los principales casos de uso del sistema de gestión digital. Cada caso
+de uso representa una funcionalidad esencial del sistema vista desde la perspectiva de los
+actores (usuarios).
+30
+
+Actores del sistema:
+•
+
+Dueño de Empresa: Supervisa operaciones, revisa reportes, gestiona usuarios.
+
+•
+
+Empleado: Registra productos y ventas.
+
+•
+
+Administrador del sistema: Realiza mantenimiento y configuraciones.
+
+Tabla de Casos de Uso (resumen)
+ID
+
+Nombre del Caso Actor Principal
+de Uso
+
+Descripción breve
+
+CU01 Registrar Producto
+
+Empleado
+
+Permite ingresar nuevos productos al
+inventario.
+
+CU02 Modificar
+Inventario
+
+Empleado
+
+Edita o elimina
+registrados.
+
+productos
+
+CU03 Registrar Venta
+
+Empleado
+
+Registra
+la
+venta
+comprobante de pago.
+
+y
+
+genera
+
+CU04 Consultar Reportes
+
+Dueño
+Empresa
+
+de Visualiza
+reportes
+de
+inventario, estadísticas.
+
+ventas,
+
+CU05 Gestionar Usuarios
+
+Dueño
+Empresa
+
+de Crea, edita o desactiva cuentas de
+usuario.
+
+CU06 Configurar Sistema
+
+Administrador
+
+ya
+
+Ajusta parámetros internos y realiza
+mantenimiento.
+
+Anexo H – Diagramas Técnicos
+Descripción:
+Este anexo incluye representaciones técnicas del sistema, necesarias para entender su
+estructura lógica, el diseño de base de datos y la interacción entre sus componentes.
+1. Diagrama Entidad-Relación (ER)
+Propósito: Visualizar la estructura de la base de datos, incluyendo tablas principales,
+claves primarias y relaciones entre entidades.
+Entidades principales:
+
+31
+
+•
+
+Usuario (id_usuario, nombre, rol, email, contraseña)
+
+•
+
+Producto (id_producto, nombre, stock, precio_unitario)
+
+•
+
+Venta (id_venta, id_usuario, fecha, total)
+
+•
+
+DetalleVenta (id_detalle, id_venta, id_producto, cantidad, subtotal)
+
+Relaciones:
+•
+
+Un usuario puede registrar muchas ventas.
+
+•
+
+Una venta tiene múltiples detalles.
+
+•
+
+Cada detalle de venta está asociado a un producto.
+
+32
+
+2. Diagrama de Componentes
+Propósito: Mostrar cómo se divide el sistema en módulos lógicos, y cómo interactúan
+entre ellos (ej. frontend, backend, base de datos).
+Componentes principales:
+•
+
+Frontend (React): Pantallas, formularios, dashboard.
+
+33
+
+•
+
+Backend (Node.js + Express/NestJS): API RESTful, lógica de negocio.
+
+•
+
+Base de Datos (MySQL): Almacén persistente.
+
+•
+
+Servidor Cloud: Despliegue y hosting.
+
+3. Diagrama de Despliegue
+Propósito: Visualizar cómo se despliega el sistema en un entorno real: hosting,
+conexiones, servidores.
+Componentes del despliegue:
+•
+
+Cliente (navegador)
+
+•
+
+Servidor Web (Node.js)
+
+•
+
+Servidor de Base de Datos
+
+•
+
+Infraestructura cloud (ej. AWS, Render, Railway)
+
+34
+
+Anexo I – Mockups y Capturas del Sistema
+Descripción:
+Este anexo presenta una colección de mockups de diseño y capturas de pantalla del
+sistema web desarrollado. Sirve como evidencia visual de la interfaz, usabilidad y
+evolución del proyecto desde su etapa de prototipo hasta su versión funcional.
+Herramientas utilizadas:
+•
+
+Figma: para el prototipado de interfaces.
+
+•
+
+React (Tailwind): para la construcción visual real de las pantallas.
+
+Mockups principales:
+1. Pantalla de Inicio de Sesión:
+o
+
+Campos: usuario, contraseña.
+
+o
+
+Botón “Iniciar sesión” con validación básica.
+
+2. Dashboard General:
+o
+
+Vistas rápidas: total de ventas, productos en stock, resumen diario.
+
+o
+
+Accesos a módulos clave.
+
+3. Módulo de Inventario:
+o
+
+Tabla de productos.
+
+35
+
+o
+
+Botón “Agregar producto”.
+
+o
+
+Opción para editar/eliminar registros.
+
+4. Módulo de Ventas:
+o
+
+Formulario de registro de venta.
+
+o
+
+Selección de cliente y productos.
+
+o
+
+Cálculo automático del total.
+
+5. Módulo de Reportes:
+o
+
+Gráficos de barras y torta.
+
+o
+
+Filtros por fechas y categorías.
+
+o
+
+Exportar a PDF o Excel.
+
+Capturas de pantalla del sistema real:
+•
+
+Login funcional (React + Backend)
+
+36
+
+•
+
+Inventario dinámico (React + DB)
+
+•
+
+Registro de ventas con comprobante generado
+
+37
+
+•
+
+Carga de datos en tabla (productos / clientes)
+
+•
+
+Vista de ventas en gráficos de barras
+
+38
+
+•
+
+Vista en gráfico pastel
+
+Anexo J – Resultados de Pruebas
+Descripción:
+Este anexo presenta los resultados de pruebas realizadas al sistema, incluyendo pruebas
+funcionales (por módulo), de integración y pruebas de rendimiento básicas. El objetivo es
+
+39
+
+validar que el sistema responde correctamente ante distintos escenarios de uso y que
+cumple con los criterios de calidad definidos.
+
+1. Pruebas Funcionales
+ID
+
+Módulo
+
+TC01 Login
+
+Caso de Prueba
+Acceder
+credenciales
+válidas
+
+TC02 Inventario Registrar
+producto
+
+Resultado Esperado
+
+Resultado
+Obtenido
+
+con Acceso permitido y Correcto
+redirección
+al
+dashboard
+
+Estado
+
+OK
+
+nuevo Producto se guarda en Correcto
+base de datos
+
+OK
+
+TC03 Inventario Registrar producto Mostrar mensaje de Correcto
+sin nombre
+error
+
+OK
+
+TC04 Ventas
+
+TC05 Ventas
+
+TC06 Reportes
+
+Registrar
+con
+disponible
+
+venta Venta registrada
+stock stock actualizado
+
+y Correcto
+
+Registrar venta sin Bloquear acción
+stock
+mostrar error
+
+y Correcto
+
+OK
+
+Filtrar ventas por Mostrar
+resultados Correcto
+fecha
+correctamente
+
+OK
+
+OK
+
+2. Pruebas de Integración
+•
+
+Prueba 1: Flujo completo desde login → registro de venta → ver reporte.
+Resultado: todos los datos fluyen correctamente entre frontend, backend y
+base de datos.
+
+•
+
+Prueba 2: Registro de producto y validación en formulario de ventas.
+Resultado: el nuevo producto aparece en el formulario de ventas sin errores.
+
+3. Pruebas de Rendimiento (JMeter)
+
+40
+
+Escenario: Simulación de 10 usuarios concurrentes accediendo al sistema y registrando
+ventas simultáneamente.
+•
+
+Herramienta: Apache JMeter
+
+•
+
+Endpoint probado: /api/ventas/registrar
+
+•
+
+Tiempo promedio de respuesta: 1.3 segundos
+
+•
+
+Porcentaje de errores: 0%
+
+•
+
+Recurso crítico: Base de datos bajo carga (latencia leve detectada > 30
+ventas/minuto)
+
+Conclusión: el sistema responde bien con una carga típica de PyMEs.
+
+Anexo K – Actas de Reunión y Comunicaciones
+Descripción:
+Este anexo incluye un resumen de las reuniones realizadas durante el proyecto,
+destacando fechas, participantes, temas tratados y decisiones tomadas. También se
+registran los principales canales y herramientas de comunicación utilizadas.
+
+Herramientas utilizadas:
+
+41
+
+•
+
+Discord: reuniones diarias breves (scrum diario).
+
+•
+
+Notion: planificación y actualización del backlog.
+
+•
+
+Google Meet: reuniones quincenales de revisión formal.
+
+•
+
+Correo institucional: envío de informes y coordinación con el patrocinador.
+
+Actas resumidas (principales reuniones)
+Fecha
+
+Tipo
+de Participantes
+Reunión
+
+01/05/2025 Reunión
+inicio
+
+Temas tratados
+
+Decisiones
+
+de José, Eduardo, Revisión
+del Aprobación
+Díaz Pulido
+alcance, estructura plan general
+de
+backlog,
+cronograma
+
+15/05/2025 Revisión
+Sprint 1
+
+José, Eduardo
+
+Presentación
+módulo
+inventario
+
+29/05/2025 Revisión
+Sprint 2
+
+José, Eduardo
+
+Módulo de ventas y Aceptado,
+facturación
+planificaron
+electrónica
+mejoras
+rendimiento
+
+12/06/2025 Revisión
+Sprint 3
+
+José, Eduardo, Dashboards
+Díaz Pulido
+reportes,
+exportación
+
+26/06/2025 Integración y José, Eduardo
+pruebas
+
+del
+
+de Aceptación
+de parcial, se sugirió
+refactor
+de
+interfaz
+
+de Aprobado,
+recomendó
+exportación
+PDF
+
+se
+de
+se
+en
+
+Revisión de errores, Se
+planificó
+ajustes
+UI, último sprint
+verificación de flujo
+completo
+
+03/07/2025 Cierre
+José, Eduardo, Revisión general del Proyecto
+técnico del Díaz Pulido
+sistema, encuestas, aprobado, entrega
+proyecto
+resultados
+de final coordinada
+pruebas
+
+42
+
+Resumen de comunicaciones clave:
+•
+
+Se enviaron 6 informes de sprint (uno por cada ciclo), vía correo institucional.
+
+•
+
+Se compartieron actas en Notion con enlaces al backlog actualizado.
+
+•
+
+Se recibieron comentarios técnicos del patrocinador al cierre de cada fase
+funcional.
+
+Anexo L – Manual de Usuario y Manual Técnico
+Manual de Usuario
+Propósito:
+Brindar instrucciones claras y concisas para que los usuarios finales (dueños, empleados)
+puedan utilizar correctamente el sistema.
+Módulos principales:
+1. Inicio de sesión
+o
+
+Acceda al sistema desde [URL del sistema].
+
+o
+
+Ingrese su correo y contraseña.
+
+o
+
+Si olvida su contraseña, contacte al administrador.
+
+2. Gestión de productos
+o
+
+En el menú lateral, seleccione “Inventario”.
+
+o
+
+Para agregar un producto: haga clic en “Nuevo Producto”, complete el
+formulario y guarde.
+
+o
+
+Puede editar o eliminar productos con los botones correspondientes.
+
+3. Registro de ventas
+o
+
+Ingrese a “Ventas”.
+
+o
+
+Seleccione cliente y productos.
+
+o
+
+El sistema calcula automáticamente el total y genera un comprobante.
+
+43
+
+4. Consulta de reportes
+o
+
+Acceda al módulo “Reportes”.
+
+o
+
+Use los filtros por fechas o categoría.
+
+o
+
+Puede exportar los resultados a PDF o Excel.
+
+5. Gestión de usuarios (solo dueño)
+o
+
+Desde “Configuración”, acceda a la sección de usuarios.
+
+o
+
+Puede crear, editar o desactivar cuentas.
+
+Manual Técnico
+Propósito:
+Documentar la arquitectura, tecnologías, y pasos para instalar, ejecutar y mantener el
+sistema por parte de desarrolladores o administradores técnicos.
+
+Sistema de Gestión Empresarial (Offline y SaaS Multiempresa)
+Descripción
+Este proyecto es un sistema integral de gestión empresarial, diseñado para funcionar tanto
+en modo offline (aplicación de escritorio con Tkinter y SQLite/MySQL) como en la nube
+bajo el modelo SaaS multiempresa (FastAPI + React). Permite gestionar empresas,
+usuarios, productos, clientes, ventas, reportes y más, con aislamiento total de datos entre
+empresas.
+Características principales
+•
+
+Modo Offline/Online: Trabajo local con sincronización automática a la nube.
+
+•
+
+SaaS Multiempresa: Cada empresa tiene su propio universo de datos.
+
+•
+
+Autenticación JWT y roles: Seguridad robusta y control de acceso granular.
+
+•
+
+Frontend moderno: React + Material UI, responsive y con excelente UX.
+
+•
+
+Backend robusto: FastAPI, SQLAlchemy, Pydantic, PostgreSQL/MySQL.
+
+•
+
+Control de versiones: Git y GitHub, con buenas prácticas y trazabilidad total.
+
+•
+
+Reportes avanzados: Gráficos de barras y torta con filtros por fechas.
+
+44
+
+•
+
+Sistema de roles: Admin, vendedor e inventario con permisos específicos.
+
+Estructura del proyecto
+A1-A2/
+├─ backend_saas/
+
+# Backend FastAPI (SaaS)
+
+├─ frontend_saas/
+
+# Frontend React (SaaS)
+
+├─ sistema_gestion_mejorado_modulos/ # Sistema offline/online (Tkinter)
+├─ backup_sistema_actual/ # Respaldos y versiones previas
+├─ images/
+
+# Recursos gráficos
+
+├─ scripts SQL
+
+# Migraciones y alteraciones de BD
+
+├─ keep_alive.py
+
+# Script de keep-alive para backend
+
+└─ otros archivos utilitarios
+Instalación y ejecución
+Requisitos generales
+•
+
+Python 3.10+
+
+•
+
+Node.js 18+
+
+•
+
+npm 9+
+
+•
+
+MySQL o PostgreSQL (según entorno)
+
+•
+
+Git
+
+Backend (FastAPI)
+1. Instala dependencias:
+2. cd backend_saas
+3. pip install -r requirements.txt
+4. Configura variables de entorno en .env o config.py.
+45
+
+5. Ejecuta migraciones SQL si es necesario.
+6. Inicia el servidor:
+7. uvicorn main:app --reload
+Frontend (React)
+1. Instala dependencias:
+2. cd frontend_saas
+3. npm install
+4. Configura la URL del backend en las variables de entorno.
+5. Ejecuta en desarrollo:
+6. npm start
+7. Para producción:
+8. npm run build
+Sistema Offline (Tkinter)
+1. Instala dependencias:
+2. cd sistema_gestion_mejorado_modulos
+3. pip install -r requirements.txt
+4. Configura credenciales de MySQL en DB_CONFIG.
+5. Ejecuta:
+6. python main_offline.py
+Dependencias principales
+•
+
+Backend: fastapi, uvicorn, sqlalchemy, pydantic, python-jose, passlib[bcrypt],
+mysql-connector-python
+
+•
+
+Frontend: react, @mui/material, @mui/icons-material, axios, react-router-dom,
+chart.js, react-chartjs-2, dayjs
+
+•
+
+Offline: tkinter, mysql-connector-python, sqlite3, passlib[bcrypt]
+
+Sistema de Roles y Permisos
+Roles disponibles:
+•
+
+admin: Acceso total a todas las funcionalidades
+
+•
+
+vendedor: Acceso a Dashboard, Inventario, Ventas, Clientes y Reportes
+
+•
+
+inventario: Acceso solo a Dashboard e Inventario
+
+46
+
+Permisos por módulo:
+•
+
+Dashboard: Todos los roles
+
+•
+
+Inventario: Todos los roles
+
+•
+
+Ventas: admin y vendedor
+
+•
+
+Clientes: admin y vendedor
+
+•
+
+Reportes: admin y vendedor
+
+•
+
+Usuarios: Solo admin
+
+•
+
+Empresa: Solo admin
+
+Funcionalidades de Reportes
+Características implementadas:
+•
+
+Filtros por fechas: Selección de rango personalizado (día, semana, mes, año)
+
+•
+
+Vista de tabla: Lista detallada de ventas con filtrado exacto
+
+•
+
+Gráfico de barras: Ventas por día con datos agrupados
+
+•
+
+Gráfico de torta: Ventas por categoría de productos
+
+•
+
+Exportación PDF: Generación de reportes en formato PDF
+
+•
+
+Filtrado preciso: Uso de dayjs para filtrado exacto de fechas
+
+Endpoints de reportes agregados:
+•
+
+GET /ventas/agrupadas-por-dia: Ventas agrupadas por día
+
+•
+
+GET /ventas/agrupadas-por-categoria: Ventas agrupadas por categoría
+
+Dependencias y validación de formularios
+Backend (FastAPI)
+•
+
+Pydantic: Usado para la validación de datos en todos los endpoints y modelos.
+Permite definir esquemas y validar automáticamente los datos recibidos en los
+formularios de creación/edición de productos, clientes, ventas, etc.
+
+•
+
+FastAPI: Permite recibir y validar datos de formularios (JSON) de manera
+automática.
+
+Frontend (React)
+•
+
+React: Los formularios (registro, productos, clientes, ventas, etc.) se implementan
+como formularios controlados usando el estado de React.
+
+•
+
+Material UI (MUI): Se utiliza para los componentes visuales de los formularios
+(inputs, selects, diálogos, etc.).
+47
+
+•
+
+Chart.js y react-chartjs-2: Para la generación de gráficos en reportes
+
+•
+
+dayjs: Para el manejo de fechas y filtros temporales
+
+•
+
+Validación: En esta versión del proyecto, la validación de formularios se realiza
+manualmente en el código React, verificando campos obligatorios, formatos y
+restricciones antes de enviar los datos al backend. No se utilizan librerías externas
+como formik o yup.
+
+Sistema Offline (Tkinter)
+•
+
+Tkinter: Usado para crear los formularios gráficos en la aplicación de escritorio
+(campos de entrada, botones, etc.).
+
+•
+
+Validación: Se realiza directamente en el código Python, comprobando los datos
+antes de guardarlos en la base de datos. No se usan librerías externas de
+validación.
+
+Esta sección detalla con precisión las dependencias y métodos usados para la gestión y
+validación de formularios en cada parte del sistema.
+Despliegue
+•
+
+Backend: Render, Railway, o VPS propio
+
+•
+
+Frontend: Vercel, Netlify, o servidor propio
+
+•
+
+Variables de entorno: .env para backend y frontend
+
+Pruebas y buenas prácticas
+•
+
+Pruebas multiempresa: aislamiento total de datos
+
+•
+
+Seguridad: JWT, roles, validación de empresa
+
+•
+
+Control de versiones: commits atómicos, ramas separadas, pull requests, push
+inmediato tras cambios clave
+
+•
+
+Backup y restauración: scripts y archivos en /backup_sistema_actual/
+
+Control de versiones y flujo de trabajo
+Durante el desarrollo de este sistema se utilizó Git para el control de versiones
+y GitHub como repositorio remoto, siguiendo buenas prácticas para asegurar la
+trazabilidad y calidad del código.
+•
+
+Estructura de ramas:
+o
+
+Se trabajó principalmente en la rama main, creando ramas temporales para
+nuevas funcionalidades o correcciones importantes, por ejemplo:
+▪
+
+feature/soporte-multiempresa
+48
+
+•
+
+bugfix/endpoint-empresas-me
+
+▪
+
+docs/actualizar-readme
+
+▪
+
+feature/reportes-graficos
+
+▪
+
+fix/permisos-vendedor
+
+Convenciones de commits:
+o
+
+o
+
+•
+
+▪
+
+Se emplearon mensajes de commit claros y estructurados, siguiendo el
+formato:
+▪
+
+feat: descripción de nueva funcionalidad
+
+▪
+
+fix: descripción de corrección
+
+▪
+
+docs: cambios en documentación
+
+Ejemplos reales:
+▪
+
+feat: agregar validación de empresa en endpoints de ventas
+
+▪
+
+fix: corregir error 422 en endpoint /empresas/me
+
+▪
+
+docs: agregar sección de dependencias en README
+
+▪
+
+feat(reportes): agregar gráficos de barras y torta con filtros
+
+▪
+
+fix(reportes): filtrar ventas en tabla solo dentro del rango exacto de
+fechas
+
+▪
+
+fix: corregir imports y eliminar useTheme no usado
+
+Flujo de trabajo:
+
+1.
+
+Crear una rama para cada nueva funcionalidad o corrección.
+
+2.
+
+Realizar commits frecuentes y descriptivos.
+
+3.
+
+Subir los cambios a GitHub (git push).
+
+4.
+
+(Opcional) Crear un Pull Request para revisión y merge.
+
+5.
+
+Fusionar los cambios a main tras revisión y pruebas.
+•
+
+•
+
+Gestión de issues y pull requests:
+o
+
+Se utilizaron issues para registrar bugs y tareas pendientes.
+
+o
+
+Los pull requests se revisaban antes de fusionar a la rama principal.
+
+Buenas prácticas:
+o
+
+Commits atómicos y enfocados.
+
+o
+
+Documentación de cada cambio relevante.
+
+49
+
+o
+
+Pruebas y validaciones antes de cada merge.
+
+Este flujo permitió mantener la calidad, seguridad y trazabilidad del proyecto en todo
+momento.
+Problemas resueltos recientemente
+Correcciones de permisos:
+•
+
+Problema: El rol vendedor no podía acceder a Clientes y Reportes
+
+•
+
+Solución: Se corrigieron las rutas en el frontend para permitir acceso a
+vendedores
+
+Mejoras en reportes:
+•
+
+Problema: Filtros de fechas incluían ventas fuera del rango seleccionado
+
+•
+
+Solución: Se
+implementó
+filtrado
+plugins isSameOrAfter e isSameOrBefore
+
+exacto
+
+usando
+
+dayjs
+
+con
+
+Correcciones de compilación:
+•
+
+Problema: Errores de ESLint por imports no usados y orden incorrecto
+
+•
+
+Solución: Se eliminaron imports
+configuraciones de dayjs y Chart.js
+
+innecesarios
+
+y
+
+se
+
+reordenaron
+
+Para más detalles, consultar el
+documento DOCUMENTACION_COMPLETA_SISTEMA_SAAS.
+
+Agradecimientos y cierre
+Este proyecto representa muchas horas de trabajo, aprendizaje, pruebas, errores y
+logros. No solo es un sistema funcional, sino también un reflejo del crecimiento
+profesional y personal durante su desarrollo.
+Agradezco a quienes colaboraron, probaron, sugirieron mejoras y, sobre todo, a
+quienes confiaron en la visión de tener un sistema robusto, flexible y preparado
+tanto para el mundo offline como para el SaaS multiempresa.
+Cada línea de código, cada commit y cada decisión técnica fue pensada para que el
+sistema sea fácil de mantener, escalar y adaptar a nuevas necesidades. El uso de
+buenas prácticas, control de versiones y documentación exhaustiva asegura que el
+proyecto pueda seguir creciendo y evolucionando.
+Espero que esta documentación sirva no solo como guía técnica, sino también
+como inspiración y referencia para futuros desarrollos. ¡Gracias por
+acompañarme en este camino y por confiar en el trabajo realizado!
+
+50
+
+las
+
+

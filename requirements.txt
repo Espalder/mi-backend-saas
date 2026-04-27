@@ -1,5 +1,5 @@
-mysql-connector-python
+mysql-connector-python==8.2.0
 pillow
 matplotlib
 reportlab
-numpy 
+numpy
