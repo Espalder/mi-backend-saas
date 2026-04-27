@@ -18,7 +18,18 @@ class Settings:
     DB_PORT: int = int(os.getenv("DB_PORT", "4000"))
     
     # SSL Configuration
-    DB_SSL_CA: str = os.getenv("DB_SSL_CA", os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "isrgrootx1.pem"))
+    DB_SSL_CA: str = os.getenv("DB_SSL_CA", "")
+    
+    def __init__(self):
+        # Si no se proporciona por env, buscar el archivo en el directorio raíz del backend
+        if not self.DB_SSL_CA:
+            backend_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            cert_path = os.path.join(backend_root, "isrgrootx1.pem")
+            if os.path.exists(cert_path):
+                self.DB_SSL_CA = cert_path
+            else:
+                # Intento alternativo para entornos Docker
+                self.DB_SSL_CA = "/app/isrgrootx1.pem"
     
     # JWT Configuration
     SECRET_KEY: str = os.getenv("SECRET_KEY", "tu_clave_secreta_muy_segura_aqui_cambiala_en_produccion")
