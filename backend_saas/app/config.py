@@ -21,15 +21,19 @@ class Settings:
     DB_SSL_CA: str = os.getenv("DB_SSL_CA", "")
     
     def __init__(self):
-        # Si no se proporciona por env, buscar el archivo en el directorio raíz del backend
-        if not self.DB_SSL_CA:
-            backend_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            cert_path = os.path.join(backend_root, "isrgrootx1.pem")
+        backend_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        
+        # Si DB_SSL_CA es un nombre de archivo simple o está vacío, construir la ruta completa
+        if not self.DB_SSL_CA or not os.path.isabs(self.DB_SSL_CA):
+            filename = self.DB_SSL_CA if self.DB_SSL_CA else "isrgrootx1.pem"
+            cert_path = os.path.join(backend_root, filename)
+            
             if os.path.exists(cert_path):
                 self.DB_SSL_CA = cert_path
             else:
-                # Intento alternativo para entornos Docker
-                self.DB_SSL_CA = "/app/isrgrootx1.pem"
+                # Intento alternativo para entornos Docker (Render)
+                docker_path = os.path.join("/app", filename)
+                self.DB_SSL_CA = docker_path
     
     # JWT Configuration
     SECRET_KEY: str = os.getenv("SECRET_KEY", "tu_clave_secreta_muy_segura_aqui_cambiala_en_produccion")
